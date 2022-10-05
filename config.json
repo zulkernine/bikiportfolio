@@ -1,0 +1,6 @@
+{
+    "imageTable":"pictures",
+    "videoTable":"videos",
+    "cloudfrontDomain":"https://dhtb3ua8nw2du.cloudfront.net",
+    "bucketName":"portfolio-clicks"
+}
