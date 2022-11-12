@@ -1,6 +1,7 @@
 {
-    "imageTable":"pictures",
-    "videoTable":"videos",
-    "cloudfrontDomain":"https://dhtb3ua8nw2du.cloudfront.net",
-    "bucketName":"portfolio-clicks"
+    "imageTable": "pictures",
+    "videoTable": "videos",
+    "adminUserTable": "users",
+    "cloudfrontDomain": "https://dhtb3ua8nw2du.cloudfront.net",
+    "bucketName": "portfolio-clicks"
 }

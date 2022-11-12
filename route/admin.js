@@ -3,9 +3,13 @@ const router = express.Router();
 const { dynamodb, Util } = require("../service/aws-service");
 const config = require("../config.json");
 const { v4: uuidv4 } = require("uuid");
+const MediaService = require("../service/media-service");
 
 router.get("/", async (req, res) => {
-    res.send("<h1>Admin portal</h1>" + "<p>Will be added later :) </p>");
+    const allImages = await MediaService.getAllImages();
+    const allVideos = await MediaService.getAllVideos();
+
+    res.render("admin/index.ejs", { allImages, allVideos });
 });
 
 /* GET method for images and videos are available under client-api */
@@ -15,12 +19,20 @@ router.get("/", async (req, res) => {
  */
 router.post("/images", async (req, res) => {
     var arr = [];
-    if (req.files.images.length) {
+    console.log(req.files);
+    if (Array.isArray(req.files.images) && req.files.images.length) { //multiple image
         for (var image of req.files.images) {
             const url = await Util.uploadImageAndGetUrl(image);
             arr.push(url);
             console.log("Image url: " + url);
         }
+    } else if (req.files.images != null) { // single image
+        const url = await Util.uploadImageAndGetUrl(req.files.images);
+        arr.push(url);
+        console.log("Image url: " + url);
+    } else {
+        req.flash("info", "No files found!");
+        res.redirect("/admin");
     }
 
     const params = {
@@ -29,7 +41,7 @@ router.post("/images", async (req, res) => {
                 return {
                     PutRequest: {
                         Item: {
-                            isRecent: req.body.isRecent === "true",
+                            isRecent: true,
                             uploadedAt: Math.trunc(Date.now() / 1000),
                             tag: req.body.tag,
                             id: url.split("/").pop(),
@@ -46,9 +58,8 @@ router.post("/images", async (req, res) => {
         .promise()
         .then(
             () => {
-                res.json({
-                    message: "post successful",
-                });
+                req.flash("info", "Successfully posted your images!");
+                res.redirect("/admin");
             },
             (error) => {
                 console.log(error);
@@ -138,9 +149,8 @@ router.post("/videos", async (req, res) => {
         .promise()
         .then(
             () => {
-                res.json({
-                    message: "video saved successfully",
-                });
+                req.flash("info", "Successfully uploaded your video!");
+                res.redirect("/admin");
             },
             (error) => {
                 console.log(error);
