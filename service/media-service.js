@@ -30,6 +30,12 @@ class MediaService {
         allVideos.sort((a, b) => b.uploadedAt - a.uploadedAt);
         return allVideos;
     }
+
+    static async getAllTeamMembers(){
+        const members = (await getAllTeamMembers());
+        members.sort((a, b) => a.serialNo - b.serialNo);
+        return members;
+    }
 }
 
 module.exports = MediaService;
@@ -44,6 +50,13 @@ async function getAllDynamoImages() {
 async function getAllDynamoVideos() {
     const params = {
         TableName: config.videoTable,
+    };
+    return await scanDynamoTable(params, []);
+}
+
+async function getAllTeamMembers(){
+    const params = {
+        TableName: config.teamTable,
     };
     return await scanDynamoTable(params, []);
 }

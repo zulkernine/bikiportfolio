@@ -3,5 +3,6 @@
     "videoTable": "videos",
     "adminUserTable": "users",
     "cloudfrontDomain": "https://dhtb3ua8nw2du.cloudfront.net",
-    "bucketName": "portfolio-clicks"
+    "bucketName": "portfolio-clicks",
+    "teamTable":"teamMembers"
 }
