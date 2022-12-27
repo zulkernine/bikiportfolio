@@ -3,9 +3,38 @@ const config = require("../config.json");
 const { v4: uuidv4 } = require("uuid");
 
 class MediaService {
-    static async getAllImages() {
+    static async getAllImages(shuffle = false) {
         const allImages = await getAllDynamoImages();
-        allImages.sort((a, b) => b.uploadedAt - a.uploadedAt);
+        // add filters
+        for (let i = 0; i < allImages.length; i++) {
+            switch (allImages[i].tag) {
+                case "WEDDING":
+                case "PRE_WEDDING":
+                    {
+                        allImages[i].filter = "wedding";
+                    }
+                    break;
+                case "BIRTH_DAY":
+                    {
+                        allImages[i].filter = "birthday";
+                    }
+                    break;
+                case "CELEBRITY":
+                    {
+                        allImages[i].filter = "models";
+                    }
+                    break;
+                case "ONE_DAY_EVENTS":
+                case "OTHERS":
+                    {
+                        allImages[i].filter = "others";
+                    }
+                    break;
+            }
+        }
+
+        if (shuffle)  allImages.sort((a, b) => a.id > b.id);
+        else allImages.sort((a, b) => b.uploadedAt - a.uploadedAt);
         return allImages;
     }
 
@@ -31,10 +60,21 @@ class MediaService {
         return allVideos;
     }
 
-    static async getAllTeamMembers(){
-        const members = (await getAllTeamMembers());
+    static async getAllTeamMembers() {
+        const members = await getAllTeamMembers();
         members.sort((a, b) => a.serialNo - b.serialNo);
         return members;
+    }
+
+    static async getTeamInfo(){
+        const params = {
+            TableName: config.adminUserTable,
+            Key: {
+                id: "zeedTeamInfo",
+            },
+        };
+        const infos = await scanDynamoTable(params, []);
+        return infos.find((v, i) => v.id == "zeedTeamInfo");
     }
 }
 
@@ -54,7 +94,7 @@ async function getAllDynamoVideos() {
     return await scanDynamoTable(params, []);
 }
 
-async function getAllTeamMembers(){
+async function getAllTeamMembers() {
     const params = {
         TableName: config.teamTable,
     };

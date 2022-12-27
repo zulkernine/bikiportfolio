@@ -74,7 +74,7 @@
                             id="alimeNav"
                         >
                             <!-- Logo -->
-                            <a class="nav-brand" href="./index.html"
+                            <a class="nav-brand" href="/"
                                 ><img
                                     src="./img/logo/logo2.png"
                                     style="width: 250px"
@@ -103,42 +103,14 @@
                                         <li>
                                             <a href="/">Home</a>
                                         </li>
-                                        <li>
-                                            <a href="#">Pages</a>
-                                            <ul class="dropdown">
-                                                <li>
-                                                    <a href="/">- Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/about">- About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/gallery"
-                                                        >- Gallery</a
-                                                    >
-                                                </li>
-                                                <li>
-                                                    <a href="/blog">- Blog</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/single-blog"
-                                                        >- Blog Details</a
-                                                    >
-                                                </li>
-                                                <li>
-                                                    <a href="/contact"
-                                                        >- Contact</a
-                                                    >
-                                                </li>
-                                            </ul>
-                                        </li>
+
                                         <li>
                                             <a href="/about">About</a>
                                         </li>
                                         <li class="active">
                                             <a href="/gallery">Gallery</a>
                                         </li>
-                                        <li><a href="/blog">Blog</a></li>
+                                        <li><a href="/cinema">Cinema</a></li>
                                         <li>
                                             <a href="/contact">Contact</a>
                                         </li>
@@ -165,7 +137,7 @@
         <!-- Breadcrumb Area Start -->
         <section
             class="breadcrumb-area bg-img bg-overlay jarallax"
-            style="background-image: url(img/bg-img/38.jpg)"
+            style="background-image: url('https://picsum.photos/1001')"
         >
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
@@ -175,7 +147,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center">
                                     <li class="breadcrumb-item">
-                                        <a href="index.html"
+                                        <a href="/"
                                             ><i class="icon_house_alt"></i>
                                             Home</a
                                         >
@@ -206,20 +178,20 @@
                             data-wow-delay="100ms"
                         >
                             <div class="portfolio-menu text-center">
-                                <button class="btn active" data-filter="*">
+                                <button class="btn active" data-filter=".all">
                                     All
                                 </button>
-                                <button class="btn" data-filter=".human">
-                                    Human
+                                <button class="btn" data-filter=".wedding">
+                                    Wedding
                                 </button>
-                                <button class="btn" data-filter=".nature">
-                                    Nature
+                                <button class="btn" data-filter=".birthday">
+                                    Birthday
                                 </button>
-                                <button class="btn" data-filter=".country">
-                                    Country
+                                <button class="btn" data-filter=".models">
+                                    Celebrity
                                 </button>
-                                <button class="btn" data-filter=".video">
-                                    Video
+                                <button class="btn" data-filter=".others">
+                                    Others
                                 </button>
                             </div>
                         </div>
@@ -227,209 +199,21 @@
                 </div>
 
                 <div class="row alime-portfolio">
-                    <!-- Single Gallery Item -->
+                    <% for(img of allImages) { %>
                     <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp"
+                        class="col-12 col-sm-6 col-lg-3 single_gallery_item <%= img.filter %> all mb-30 wow fadeInUp"
                         data-wow-delay="100ms"
                     >
                         <div class="single-portfolio-content">
-                            <img src="img/bg-img/39.jpg" alt="" />
+                            <img src="<%= img.url %>" alt="" />
                             <div class="hover-content">
-                                <a
-                                    href="img//bg-img/39.jpg"
-                                    class="portfolio-img"
+                                <a href="<%= img.url %>" class="portfolio-img"
                                     >+</a
                                 >
                             </div>
                         </div>
                     </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item video human mb-30 wow fadeInUp"
-                        data-wow-delay="300ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/40.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/40.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item country mb-30 wow fadeInUp"
-                        data-wow-delay="500ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/41.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/41.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item human mb-30 wow fadeInUp"
-                        data-wow-delay="700ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/42.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/42.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp"
-                        data-wow-delay="100ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/43.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/43.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item video country mb-30 wow fadeInUp"
-                        data-wow-delay="300ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/44.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/44.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item human mb-30 wow fadeInUp"
-                        data-wow-delay="500ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/45.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/45.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp"
-                        data-wow-delay="700ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/46.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/46.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item video country mb-30 wow fadeInUp"
-                        data-wow-delay="100ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/47.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/47.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item human mb-30 wow fadeInUp"
-                        data-wow-delay="300ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/48.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/48.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item country mb-30 wow fadeInUp"
-                        data-wow-delay="500ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/49.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/49.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Gallery Item -->
-                    <div
-                        class="col-12 col-sm-6 col-lg-3 single_gallery_item country mb-30 wow fadeInUp"
-                        data-wow-delay="700ms"
-                    >
-                        <div class="single-portfolio-content">
-                            <img src="img/bg-img/50.jpg" alt="" />
-                            <div class="hover-content">
-                                <a
-                                    href="img//bg-img/50.jpg"
-                                    class="portfolio-img"
-                                    >+</a
-                                >
-                            </div>
-                        </div>
-                    </div>
+                    <% } %>
                 </div>
 
                 <div class="row">
@@ -446,96 +230,36 @@
         </div>
         <!-- Gallery Area End -->
 
-        <!-- Follow Area Start -->
-        <div class="follow-area clearfix">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section-heading text-center">
-                            <h2>Follow Instagram</h2>
-                            <p>@Alime_photographer</p>
+        <!-- All Videos section begin -->
+        <div class="container-fluid" style="padding: 30px">
+            <div class="owl-carousel" id="recentVideos">
+                <% for(vid of allVideos) { %>
+                <div class="card mx-1">
+                    <div
+                        class="about-video-area wow fadeInUp"
+                        data-wow-delay="100ms"
+                    >
+                        <img
+                            src="<%= vid.thumbnailUrl  %>"
+                            style="overflow-y: hidden; object-fit: cover"
+                        />
+                        <div class="video-icon">
+                            <a href="<%= vid.url  %>" class="video-play-btn"
+                                ><i class="arrow_triangle-right"></i
+                            ></a>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Instagram Feed Area -->
-            <div class="instragram-feed-area owl-carousel">
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/11.jpg" alt="" />
                     <div
-                        class="instagram-hover-content text-center d-flex align-items-center justify-content-center"
+                        class="card-body text-overflow-1"
+                        style="max-height: 58px"
                     >
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
+                        <p class="card-text"><%= vid.description %></p>
                     </div>
                 </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/12.jpg" alt="" />
-                    <div
-                        class="instagram-hover-content text-center d-flex align-items-center justify-content-center"
-                    >
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/13.jpg" alt="" />
-                    <div
-                        class="instagram-hover-content text-center d-flex align-items-center justify-content-center"
-                    >
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/14.jpg" alt="" />
-                    <div
-                        class="instagram-hover-content text-center d-flex align-items-center justify-content-center"
-                    >
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/15.jpg" alt="" />
-                    <div
-                        class="instagram-hover-content text-center d-flex align-items-center justify-content-center"
-                    >
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/16.jpg" alt="" />
-                    <div
-                        class="instagram-hover-content text-center d-flex align-items-center justify-content-center"
-                    >
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
+                <% } %>
             </div>
         </div>
-        <!-- Follow Area End -->
+        <!-- All Videos section end -->
 
         <!-- Footer Area Start -->
         <footer class="footer-area">

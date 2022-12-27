@@ -7,7 +7,7 @@ const homeRouter = require("./route/home");
 const authRouter = require("./route/auth");
 const clientApiRouter = require("./route/client-api");
 const session = require("express-session");
-const flash = require('express-flash');
+const flash = require("express-flash");
 const MediaService = require("./service/media-service");
 
 app.use(fileUpload());
@@ -27,7 +27,7 @@ app.use(
 );
 app.use(flash());
 app.use(express.static(__dirname + "/static"));
-app.use("/admin",checkAuthenticated, adminRouter);
+app.use("/admin", checkAuthenticated, adminRouter);
 app.use("/api", clientApiRouter);
 app.use("/login", authRouter);
 
@@ -45,23 +45,29 @@ app.get("/", async (req, res) => {
     const recentVideos = await MediaService.getRecentVideos();
     const teamMembers = await MediaService.getAllTeamMembers();
 
-    res.render("index.ejs",{recentImages,recentVideos,teamMembers});
+    res.render("index.ejs", { recentImages, recentVideos, teamMembers });
 });
 
-app.get('/about',(req,res)=>{
-    res.render('about.ejs');
+app.get("/about", async (req, res) => {
+    const teamMembers = await MediaService.getAllTeamMembers();
+    res.render("about.ejs",{teamMembers});
 });
 
-app.get("/blog", (req, res) => {
-    res.render("blog.ejs");
+app.get("/cinema", async (req, res) => {
+    const allVideos = await MediaService.getAllVideos();
+    res.render("cinema.ejs",{allVideos});
 });
 
-app.get("/contact", (req, res) => {
-    res.render("contact.ejs");
+app.get("/contact", async (req, res) => {
+    const teamInfo = await MediaService.getTeamInfo();
+    console.log(teamInfo);
+    res.render("contact.ejs",{teamInfo});
 });
 
-app.get("/gallery", (req, res) => {
-    res.render("gallery.ejs");
+app.get("/gallery", async (req, res) => {
+    const allImages = await MediaService.getAllImages(true);
+    const recentVideos = await MediaService.getRecentVideos();
+    res.render("gallery.ejs", { allImages,"allVideos":recentVideos });
 });
 
 app.get("/single-blog", (req, res) => {
