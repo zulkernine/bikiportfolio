@@ -1,4 +1,5 @@
 const express = require("express");
+const serverless = require("serverless-http");
 const app = express();
 const port = process.env.PORT || 3000;
 const fileUpload = require("express-fileupload");
@@ -74,9 +75,11 @@ app.get("/single-blog", (req, res) => {
     res.render("single-blog.ejs");
 });
 
-app.listen(port, () => {
-    console.log("Listening to port: " + port);
-});
+// app.listen(port, () => {
+//     console.log("Listening to port: " + port);
+// });
+
+module.exports.handler = serverless(app);
 
 function checkAuthenticated(req, res, next) {
     console.log("authntication check " + req.session.isAuthenticated);
