@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Title -->
+        <title>ZeedStudio</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="./img/logo/favicon.ico" />
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <!-- Preloader -->
+        <div id="preloader">
+            <div class="loader"></div>
+        </div>
+        <!-- /Preloader -->
+
+        <!-- Top Search Form Area -->
+        <div class="top-search-area">
+            <div
+                class="modal fade"
+                id="searchModal"
+                tabindex="-1"
+                role="dialog"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <!-- Close -->
+                            <button
+                                type="button"
+                                class="btn close-btn"
+                                data-dismiss="modal"
+                            >
+                                <i class="ti-close"></i>
+                            </button>
+                            <!-- Form -->
+                            <form action="index.html" method="post">
+                                <input
+                                    type="search"
+                                    name="top-search-bar"
+                                    class="form-control"
+                                    placeholder="Search and hit enter..."
+                                />
+                                <button type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Area Start -->
+        <header class="header-area">
+            <!-- Main Header Start -->
+            <div class="main-header-area">
+                <div class="classy-nav-container breakpoint-off">
+                    <div class="container">
+                        <!-- Classy Menu -->
+                        <nav
+                            class="classy-navbar justify-content-between"
+                            id="alimeNav"
+                        >
+                            <!-- Logo -->
+                            <a class="nav-brand" href="/"
+                                ><img
+                                    src="./img/logo/logo2.png"
+                                    style="width: 250px"
+                                    alt=""
+                            /></a>
+
+                            <!-- Navbar Toggler -->
+                            <div class="classy-navbar-toggler">
+                                <span class="navbarToggler"
+                                    ><span></span><span></span><span></span
+                                ></span>
+                            </div>
+
+                            <!-- Menu -->
+                            <div class="classy-menu">
+                                <!-- Menu Close Button -->
+                                <div class="classycloseIcon">
+                                    <div class="cross-wrap">
+                                        <span class="top"></span
+                                        ><span class="bottom"></span>
+                                    </div>
+                                </div>
+                                <!-- Nav Start -->
+                                <div class="classynav">
+                                    <ul id="nav">
+                                        <li>
+                                            <a href="/">Home</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/about">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="/gallery">Gallery</a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/cinema">Cinema</a>
+                                        </li>
+                                        <li>
+                                            <a href="/contact">Contact</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Search Icon -->
+                                    <div
+                                        class="search-icon"
+                                        data-toggle="modal"
+                                        data-target="#searchModal"
+                                    >
+                                        <i class="ti-search"></i>
+                                    </div>
+                                </div>
+                                <!-- Nav End -->
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header Area End -->
+
+        <!-- Breadcrumb Area Start -->
+        <section
+            class="breadcrumb-area bg-img bg-overlay jarallax"
+            style="background-image: url('https://picsum.photos/1001')"
+        >
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="breadcrumb-content text-center">
+                            <h2 class="page-title">Latest Cinematography</h2>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item">
+                                        <a href="index.html"
+                                            ><i class="icon_house_alt"></i>
+                                            Home</a
+                                        >
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        Cinematography
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Breadcrumb Area End -->
+
+        <!-- Blog Area Start -->
+        <div class="alime-blog-area section-padding-80-0 mb-70">
+            <div class="container">
+                <div class="row">
+                    <% for(vid of allVideos) { %>
+                    <div class="col-12 col-lg-6">
+                        <div class="card m-3">
+                            <div
+                                class="about-video-area wow fadeInUp"
+                                data-wow-delay="100ms"
+                            >
+                                <img
+                                    src="<%= vid.thumbnailUrl  %>"
+                                    style="
+                                        overflow-y: hidden;
+                                        object-fit: cover;
+                                    "
+                                />
+                                <div class="video-icon">
+                                    <a
+                                        href="<%= vid.url  %>"
+                                        class="video-play-btn"
+                                        ><i class="arrow_triangle-right"></i
+                                    ></a>
+                                </div>
+                            </div>
+                            <div
+                                class="card-body text-overflow-1"
+                                style="max-height: 58px"
+                            >
+                                <p class="card-text"><%= vid.description %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+                    <!-- Single Blog Area -->
+                    <!-- <div class="col-12 col-lg-6">
+                        <div
+                            class="single-post-area wow fadeInUpBig"
+                            data-wow-delay="100ms"
+                        >
+                            <a href="#" class="post-thumbnail"
+                                ><img src="img/bg-img/51.jpg" alt=""
+                            /></a>
+                            <a href="#" class="btn post-catagory"
+                                >Photography</a
+                            >
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <a href="#">May 19, 2019</a>
+                                    <a href="#">3 Comment</a>
+                                </div>
+                                <a href="#" class="post-title"
+                                    >The Female Body Shape Men Find Most
+                                    Attractive</a
+                                >
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- Blog Area End -->
+
+        <!-- Follow Area Start -->
+        <section
+            class="why-choose-us-area bg-gray section-padding-80-0 clearfix mt-30"
+        >
+            <div class="container">
+                <!-- Contact Us -->
+                <div style="text-align: center; padding-bottom: 30px">
+                    <a href="/contact">
+                        <h2
+                            style="
+                                font-family: 'Rajdhani', sans-serif;
+                                color: #fc6060;
+                            "
+                        >
+                            Contact Us
+                        </h2>
+                    </a>
+                    <h4>+91 679802340</h4>
+                </div>
+            </div>
+        </section>
+        <!-- Follow Area End -->
+
+        <!-- Footer Area Start -->
+        <footer class="footer-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="footer-content d-flex align-items-center justify-content-between"
+                        >
+                            <!-- Copywrite Text -->
+                            <div class="copywrite-text">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>
+                                        document.write(
+                                            new Date().getFullYear()
+                                        );
+                                    </script>
+                                    All rights reserved | This template is made
+                                    with
+                                    <i
+                                        class="fa fa-heart-o"
+                                        aria-hidden="true"
+                                    ></i>
+                                    by
+                                    <a
+                                        href="https://colorlib.com"
+                                        target="_blank"
+                                        >Colorlib</a
+                                    >
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                            </div>
+                            <!-- Footer Logo -->
+                            <div class="footer-logo">
+                                <a href="#"
+                                    ><img
+                                        src="./img/logo/logo2.png"
+                                        style="width: 150px"
+                                        alt=""
+                                /></a>
+                            </div>
+                            <!-- Social Info -->
+                            <div class="social-info">
+                                <a href="#"
+                                    ><i
+                                        class="ti-facebook"
+                                        aria-hidden="true"
+                                    ></i
+                                ></a>
+                                <a href="#"
+                                    ><i
+                                        class="ti-twitter-alt"
+                                        aria-hidden="true"
+                                    ></i
+                                ></a>
+                                <a href="#"
+                                    ><i
+                                        class="ti-linkedin"
+                                        aria-hidden="true"
+                                    ></i
+                                ></a>
+                                <a href="#"
+                                    ><i
+                                        class="ti-pinterest"
+                                        aria-hidden="true"
+                                    ></i
+                                ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Area End -->
+
+        <!-- **** All JS Files ***** -->
+        <!-- jQuery 2.2.4 -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Popper -->
+        <script src="js/popper.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- All Plugins -->
+        <script src="js/alime.bundle.js"></script>
+        <!-- Active -->
+        <script src="js/default-assets/active.js"></script>
+    </body>
+</html>
