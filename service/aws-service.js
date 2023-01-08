@@ -1,5 +1,6 @@
 const AWS = require("aws-sdk");
 const projectConfig = require('../config.json');
+const env = require("dotenv");
 
 AWS.config.update({
     region: "ap-south-1",
