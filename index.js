@@ -75,9 +75,11 @@ app.get("/single-blog", (req, res) => {
     res.render("single-blog.ejs");
 });
 
-app.listen(port, () => {
-    console.log("Listening to port: " + port);
-});
+// app.listen(port, () => {
+//     console.log("Listening to port: " + port);
+// });
+
+module.exports = app;
 
 function checkAuthenticated(req, res, next) {
     console.log("authntication check " + req.session.isAuthenticated);
