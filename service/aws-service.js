@@ -3,6 +3,8 @@ const projectConfig = require('../config.json');
 
 AWS.config.update({
     region: "ap-south-1",
+    accessKeyId: process.env.aws_key,
+    secretAccessKey: process.env.aws_secret,
 });
 
 const { v4: uuidv4 } = require('uuid');
