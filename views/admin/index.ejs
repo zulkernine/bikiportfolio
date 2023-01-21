@@ -25,12 +25,15 @@
                             <h4 class="mb-3">Admin</h4>
 
                             <form method="post" action="/logout">
-                                <button
-                                    type="submit"
-                                    class="btn btn-danger btn-lg"
-                                >
-                                    Logout
-                                </button>
+                                <div class="form-group">
+                                    <label for="apiSecret">Password</label>
+                                    <input
+                                        type="password"
+                                        class="form-control"
+                                        id="apiSecretKey"
+                                        placeholder="Secret Key"
+                                    />
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -61,6 +64,7 @@
         <div class="container-xl">
             <!-- Upload Forms -->
             <div class="accordion mb-4" id="accordionExample">
+                <!-- Upload Images -->
                 <div class="accordion-item">
                     <h2 class="accordion-header card-header" id="headingOne">
                         <button
@@ -135,6 +139,7 @@
                     </div>
                 </div>
 
+                <!-- Upload video section -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button
@@ -160,6 +165,7 @@
                                 action="/admin/videos"
                                 method="post"
                                 enctype="multipart/form-data"
+                                id="uploadVideoForm"
                             >
                                 <div class="mb-3 col-auto">
                                     <label
@@ -384,7 +390,6 @@
                                     </textarea>
                                 </div>
                                 <div class="col-auto row">
-                                
                                     <button
                                         class="btn btn-outline-primary btn-sm m-2 col-auto"
                                         onclick="saveVideoDes( '<%= vid.id %>' )"
@@ -397,7 +402,6 @@
                                     >
                                         Cancel
                                     </button>
-                                    
                                 </div>
                             </div>
                         </td>
@@ -450,86 +454,156 @@
             </table>
         </div>
         <script>
-            function deleteImage(id) {
-                console.log(id);
+            /**
+             * Following are Form upload handlers
+             */
+
+             //Upload image handler
+            $("form#uploadImagesForm").submit(function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+
                 $.ajax({
-                    type: "delete",
                     url: "/admin/images",
-                    data: JSON.stringify({ id }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
+                    type: "POST",
+                    data: formData,
                     success: function (data) {
                         location.reload();
                     },
-                    error: function (jqXHR, textStatus, errorThrown) {
+                    beforeSend: function (request) {
+                        request.setRequestHeader(
+                            "x-api-key",
+                            $("#apiSecretKey").val()
+                        );
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                });
+            });
+
+            //Upload video handler
+            $("form#uploadVideoForm").submit(function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+
+                $.ajax({
+                    url: "/admin/videos",
+                    type: "POST",
+                    data: formData,
+                    success: function (data) {
+                        location.reload();
+                    },
+                    beforeSend: function (request) {
+                        request.setRequestHeader(
+                            "x-api-key",
+                            $("#apiSecretKey").val()
+                        );
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                });
+            });
+
+
+            /**
+             * Followings are update/delete operations
+             */
+            function networkCall(
+                type,
+                url,
+                body,
+                successCallBack,
+                failureCallback
+            ) {
+                $.ajax({
+                    type: type,
+                    url: url,
+                    data: JSON.stringify(body),
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true,
+                    beforeSend: function (request) {
+                        request.setRequestHeader(
+                            "x-api-key",
+                            $("#apiSecretKey").val()
+                        );
+                    },
+                    success: successCallBack,
+                    error: failureCallback,
+                });
+            }
+
+            function deleteImage(id) {
+                console.log(id);
+                networkCall(
+                    "delete",
+                    "/admin/images",
+                    { id },
+                    function (data) {
+                        location.reload();
+                    },
+                    function (jqXHR, textStatus, errorThrown) {
                         alert("Can't delete, try again");
                         console.log(errorThrown);
-                    },
-                });
+                    }
+                );
             }
 
             function handleRecentImage(cb, id) {
-                $.ajax({
-                    type: "patch",
-                    url: "/admin/images",
-                    data: JSON.stringify({
+                networkCall(
+                    "patch",
+                    "/admin/images",
+                    {
                         id,
                         updateKey: "isRecent",
                         updateValue: cb.checked,
-                    }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
-                        // location.reload();
+                    },
+                    function (data) {
                         console.log("Successfully changed status");
                     },
-                    error: function (jqXHR, textStatus, errorThrown) {
+                    function (jqXHR, textStatus, errorThrown) {
                         alert("Can't change status, try again");
                         console.log(errorThrown);
                         cb.checked = !cb.checked;
-                    },
-                });
+                    }
+                );
             }
 
             function handleRecentVideo(cb, id) {
-                $.ajax({
-                    type: "patch",
-                    url: "/admin/videos",
-                    data: JSON.stringify({
+                networkCall(
+                    "patch",
+                    "/admin/videos",
+                    {
                         id,
                         updateKey: "isRecent",
                         updateValue: cb.checked,
-                    }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
-                        // location.reload();
+                    },
+                    function (data) {
                         console.log("Successfully changed status");
                     },
-                    error: function (jqXHR, textStatus, errorThrown) {
+                    function (jqXHR, textStatus, errorThrown) {
                         alert("Can't change status, try again");
                         console.log(errorThrown);
                         cb.checked = !cb.checked;
-                    },
-                });
+                    }
+                );
             }
 
             function deleteVideo(id) {
                 console.log(id);
-                $.ajax({
-                    type: "delete",
-                    url: "/admin/videos",
-                    data: JSON.stringify({ id }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
+                networkCall(
+                    "delete",
+                    "/admin/videos",
+                    { id },
+                    function (data) {
                         location.reload();
                     },
-                    error: function (jqXHR, textStatus, errorThrown) {
+                    function (jqXHR, textStatus, errorThrown) {
                         alert("Can't delete, try again");
                         console.log(errorThrown);
-                    },
-                });
+                    }
+                );
             }
 
             function editVideoDes(id) {
@@ -544,33 +618,29 @@
             }
 
             function saveVideoDes(id) {
-                console.log($('textarea#editDesInp'+id).val());
-                $.ajax({
-                    type: "patch",
-                    url: "/admin/videos",
-                    data: JSON.stringify({
+                console.log($("textarea#editDesInp" + id).val());
+                networkCall(
+                    "patch",
+                    "/admin/videos",
+                    {
                         id,
                         updateKey: "description",
-                        updateValue: $('#editDesInp'+id).val(),
-                    }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
+                        updateValue: $("#editDesInp" + id).val(),
+                    },
+                    function (data) {
                         // location.reload();
                         console.log("Successfully changed description");
                         location.reload();
                     },
-                    error: function (jqXHR, textStatus, errorThrown) {
+                    function (jqXHR, textStatus, errorThrown) {
                         alert("Can't change Description, try again");
                         console.log(errorThrown);
                         cb.checked = !cb.checked;
-                    },
-                });
+                    }
+                );
 
                 cancelEditVideo(id);
             }
-
-
         </script>
     </body>
 </html>

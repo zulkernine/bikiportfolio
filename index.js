@@ -28,14 +28,15 @@ app.use(
 );
 app.use(flash());
 app.use(express.static(__dirname + "/static"));
-app.use("/admin", checkAuthenticated, adminRouter);
+// app.use("/admin", adminRouter);
+app.use("/admin", authRouter, adminRouter);
 app.use("/api", clientApiRouter);
-app.use("/login", authRouter);
+// app.use("/login", authRouter);
 
-app.post("/logout", (req, res) => {
-    req.session.isAuthenticated = null;
-    res.redirect("/login");
-});
+// app.post("/logout", (req, res) => {
+//     req.session.isAuthenticated = null;
+//     res.redirect("/login");
+// });
 
 app.get("/echo", (req, res) => {
     res.send(req.body.tostring());
@@ -75,15 +76,19 @@ app.get("/single-blog", (req, res) => {
     res.render("single-blog.ejs");
 });
 
-// app.listen(port, () => {
-//     console.log("Listening to port: " + port);
-// });
+app.listen(port, () => {
+    console.log("Listening to port: " + port);
+});
 
 module.exports.handler = serverless(app);
 
-function checkAuthenticated(req, res, next) {
-    console.log("authntication check " + req.session.isAuthenticated);
-    if (req.session.isAuthenticated) {
-        return next();
-    } else res.redirect("/login");
-}
+// function checkAuthenticated(req, res, next) {
+//     let apikey = req.headers["X-API-KEY"];
+//     if(apikey == null){
+//         apikey = req.query["API_KEY"]
+//     }
+//     console.log("authntication check " + apikey);
+//     if (apikey == "IamBiki") {
+//         return next();
+//     } else res.render("unauthorized.ejs");
+// }

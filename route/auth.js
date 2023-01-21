@@ -4,19 +4,14 @@ const bcrypt = require("bcryptjs");
 const { dynamodb } = require("../service/aws-service");
 const config = require("../config.json");
 
-router.get("/", checkNotAuthenticated, async (req, res) => {
-    res.render("login.ejs");
-});
-
-function checkNotAuthenticated(req, res, next) {
-    if (req.session.isAuthenticated) {
-        return res.redirect("/admin");
+function checkAuthenticated(req, res, next) {
+    let apikey = req.headers["x-api-key"];
+    if (apikey == null) {
+        apikey = req.query["API_KEY"];
     }
-    next();
-}
 
-router.post("/", (req, res) => {
-    console.log(req.body.password);
+    if (apikey == null) return res.render("unauthorized.ejs");
+
     var params = {
         TableName: config.adminUserTable,
         Key: {
@@ -30,13 +25,12 @@ router.post("/", (req, res) => {
             console.log("Error", err);
             res.render("login.ejs", { error: err });
         } else {
-            if (bcrypt.compareSync(req.body.password, data.password)) {
+            if (bcrypt.compareSync(apikey, data.password)) {
                 console.log("Success");
-                req.session.isAuthenticated = true;
-                res.redirect("/admin");
-            } else res.render("login.ejs", { error: "Access key is wrong!" });
+                next(); 
+            } else res.render("unauthorized.ejs");
         }
     });
-});
+}
 
-module.exports = router;
+module.exports = checkAuthenticated;
