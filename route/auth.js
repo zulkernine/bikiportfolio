@@ -5,9 +5,10 @@ const { dynamodb } = require("../service/aws-service");
 const config = require("../config.json");
 
 function checkAuthenticated(req, res, next) {
+
     let apikey = req.headers["x-api-key"];
     if (apikey == null) {
-        apikey = req.query["API_KEY"];
+        apikey = req.query.apikey;
     }
 
     if (apikey == null) return res.render("unauthorized.ejs");
