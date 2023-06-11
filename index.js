@@ -53,6 +53,11 @@ app.get("/about", async (req, res) => {
     res.render("about.ejs",{teamMembers});
 });
 
+app.get("/our-crew", async (req, res) => {
+    const teamMembers = await MediaService.getAllTeamMembers();
+    res.render("crew.ejs", { teamMembers });
+});
+
 app.get("/cinema", async (req, res) => {
     const allVideos = await MediaService.getAllVideos();
     res.render("cinema.ejs",{allVideos});
@@ -66,8 +71,8 @@ app.get("/contact", async (req, res) => {
 
 app.get("/gallery", async (req, res) => {
     const allImages = await MediaService.getAllImages(true);
-    const recentVideos = await MediaService.getRecentVideos();
-    res.render("gallery.ejs", { allImages,"allVideos":recentVideos });
+    // const recentVideos = await MediaService.getRecentVideos();
+    res.render("gallery.ejs", { allImages });
 });
 
 app.get("/single-blog", (req, res) => {

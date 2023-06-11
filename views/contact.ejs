@@ -76,7 +76,7 @@
                             <!-- Logo -->
                             <a class="nav-brand" href="/"
                                 ><img
-                                    src="./img/logo/logo2.png"
+                                    src="./img/logo/logo4.png"
                                     style="width: 250px"
                                     alt=""
                             /></a>
@@ -108,9 +108,12 @@
                                             <a href="/about">About</a>
                                         </li>
                                         <li>
+                                            <a href="/our-crew">Our Crew</a>
+                                        </li>
+                                        <li>
                                             <a href="/gallery">Gallery</a>
                                         </li>
-                                        <li><a href="/cinema">Cinema</a></li>
+                                        <li><a href="/cinema">Films</a></li>
                                         <li class="active">
                                             <a href="/contact">Contact</a>
                                         </li>
@@ -172,7 +175,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-6">
-                        <h2 class="contact-title mb-30" style="font-family: 'Courier New', Courier, monospace;">
+                        <h2
+                            class="contact-title mb-30"
+                            style="
+                                font-family: 'Courier New', Courier, monospace;
+                            "
+                        >
                             Let’s Work <br />Together
                         </h2>
                     </div>
@@ -180,9 +188,9 @@
                         <!-- Contact Info -->
                         <div class="contact-info mb-30">
                             <p>Email</p>
-                            <a href="mailto:<%= teamInfo.email %>"
-                                > <%= teamInfo.email %> </a
-                            >
+                            <a href="mailto:<%= teamInfo.email %>">
+                                <%= teamInfo.email %>
+                            </a>
                         </div>
                         <!-- Contact Info -->
                         <div class="contact-info mb-30">
@@ -194,7 +202,9 @@
                         <!-- Contact Info -->
                         <div class="contact-info mb-30">
                             <p>Visit Us</p>
-                            <a href="#"> <%= teamInfo.locationDescription %> </a>
+                            <a href="#">
+                                <%= teamInfo.locationDescription %>
+                            </a>
                         </div>
                     </div>
                 </div>

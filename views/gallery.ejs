@@ -76,7 +76,7 @@
                             <!-- Logo -->
                             <a class="nav-brand" href="/"
                                 ><img
-                                    src="./img/logo/logo2.png"
+                                    src="./img/logo/logo4.png"
                                     style="width: 250px"
                                     alt=""
                             /></a>
@@ -107,10 +107,13 @@
                                         <li>
                                             <a href="/about">About</a>
                                         </li>
+                                        <li>
+                                            <a href="/our-crew">Our Crew</a>
+                                        </li>
                                         <li class="active">
                                             <a href="/gallery">Gallery</a>
                                         </li>
-                                        <li><a href="/cinema">Cinema</a></li>
+                                        <li><a href="/cinema">Films</a></li>
                                         <li>
                                             <a href="/contact">Contact</a>
                                         </li>
@@ -229,37 +232,6 @@
             </div>
         </div>
         <!-- Gallery Area End -->
-
-        <!-- All Videos section begin -->
-        <div class="container-fluid" style="padding: 30px">
-            <div class="owl-carousel" id="recentVideos">
-                <% for(vid of allVideos) { %>
-                <div class="card mx-1">
-                    <div
-                        class="about-video-area wow fadeInUp"
-                        data-wow-delay="100ms"
-                    >
-                        <img
-                            src="<%= vid.thumbnailUrl  %>"
-                            style="overflow-y: hidden; object-fit: cover"
-                        />
-                        <div class="video-icon">
-                            <a href="<%= vid.url  %>" class="video-play-btn"
-                                ><i class="arrow_triangle-right"></i
-                            ></a>
-                        </div>
-                    </div>
-                    <div
-                        class="card-body text-overflow-1"
-                        style="max-height: 58px"
-                    >
-                        <p class="card-text"><%= vid.description %></p>
-                    </div>
-                </div>
-                <% } %>
-            </div>
-        </div>
-        <!-- All Videos section end -->
 
         <!-- Footer Area Start -->
         <footer class="footer-area">
