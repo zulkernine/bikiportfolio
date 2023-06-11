@@ -3,8 +3,10 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { dynamodb } = require("../service/aws-service");
 const config = require("../config.json");
+require("dotenv").config();
 
 function checkAuthenticated(req, res, next) {
+    console.log(process.env.SESSION_SECRET);
 
     let apikey = req.headers["x-api-key"];
     if (apikey == null) {
