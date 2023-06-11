@@ -49,8 +49,8 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/about", async (req, res) => {
-    const teamMembers = await MediaService.getAllTeamMembers();
-    res.render("about.ejs",{teamMembers});
+    const aboutImages = await MediaService.getAlboutImages();
+    res.render("about.ejs", { aboutImages });
 });
 
 app.get("/our-crew", async (req, res) => {

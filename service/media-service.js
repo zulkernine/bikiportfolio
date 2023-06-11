@@ -33,9 +33,16 @@ class MediaService {
             }
         }
 
-        if (shuffle)  allImages.sort((a, b) => a.id > b.id);
+        if (shuffle) allImages.sort((a, b) => a.id > b.id);
         else allImages.sort((a, b) => b.uploadedAt - a.uploadedAt);
         return allImages;
+    }
+
+    static async getAlboutImages() {
+        const params = {
+            TableName: config.aboutTable,
+        };
+        return await scanDynamoTable(params, []);
     }
 
     static async getRecentImages() {
@@ -66,7 +73,18 @@ class MediaService {
         return members;
     }
 
-    static async getTeamInfo(){
+    static async findById(table,id){
+        const params = {
+            TableName: table,
+            Key: {
+                id: id,
+            },
+        };
+        const infos = await scanDynamoTable(params, []);
+        return infos.length ? infos[0] : null;
+    }
+
+    static async getTeamInfo() {
         const params = {
             TableName: config.adminUserTable,
             Key: {

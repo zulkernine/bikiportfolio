@@ -1,278 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content="" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
 
-        <!-- Title -->
-        <title>ZeedStudio</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Favicon -->
-        <link rel="icon" href="./img/logo/favicon.ico" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Rajdhani"
-        />
-        <!-- Stylesheet -->
-        <link rel="stylesheet" href="style.css" />
-    </head>
+    <!-- Title -->
+    <title>ZeedStudio</title>
 
-    <body>
-        <!-- Preloader -->
-        <div id="preloader">
-            <div class="loader"></div>
+    <!-- Favicon -->
+    <link rel="icon" href="./img/logo/favicon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rajdhani" />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
+
+    <!-- Top Search Form Area -->
+    <div class="top-search-area">
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- Close -->
+                        <button type="button" class="btn close-btn" data-dismiss="modal">
+                            <i class="ti-close"></i>
+                        </button>
+                        <!-- Form -->
+                        <form action="index.html" method="post">
+                            <input type="search" name="top-search-bar" class="form-control"
+                                placeholder="Search and hit enter..." />
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /Preloader -->
+    </div>
 
-        <!-- Top Search Form Area -->
-        <div class="top-search-area">
-            <div
-                class="modal fade"
-                id="searchModal"
-                tabindex="-1"
-                role="dialog"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <!-- Close -->
-                            <button
-                                type="button"
-                                class="btn close-btn"
-                                data-dismiss="modal"
-                            >
-                                <i class="ti-close"></i>
-                            </button>
-                            <!-- Form -->
-                            <form action="index.html" method="post">
-                                <input
-                                    type="search"
-                                    name="top-search-bar"
-                                    class="form-control"
-                                    placeholder="Search and hit enter..."
-                                />
-                                <button type="submit">Search</button>
-                            </form>
+    <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="alimeNav">
+                        <!-- Logo -->
+                        <a class="nav-brand" href="/"><img src="./img/logo/logo4.png" style="width: 200px" alt="" /></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap">
+                                    <span class="top"></span><span class="bottom"></span>
+                                </div>
+                            </div>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li>
+                                        <a href="/">Home</a>
+                                    </li>
+
+                                    <li class="active">
+                                        <a href="/about">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="/our-crew">Our Crew</a>
+                                    </li>
+                                    <li>
+                                        <a href="/gallery">Gallery</a>
+                                    </li>
+                                    <li><a href="/cinema">Films</a></li>
+                                    <li>
+                                        <a href="/contact">Contact</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Search Icon -->
+                                <div class="search-icon" data-toggle="modal" data-target="#searchModal">
+                                    <i class="ti-search"></i>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    <!-- start: About us banners -->
+    <section>
+        <div class="welcome-slides owl-carousel h-100">
+            <% for(let img of aboutImages) { %>
+            <!-- Single Slide -->
+            <div id="<%= img.id %>" class=" bg-img bg-overlay d-flex min-vh-100" >
+                <div class="my-auto w-100">
+                    <img src="<%= img.url %>" />
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </section>
+    <!-- end: About us banners -->
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-content d-flex align-items-center justify-content-between">
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>
+                                    document.write(
+                                        new Date().getFullYear()
+                                    );
+                                </script>
+                                All rights reserved | This template is made
+                                with
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                by
+                                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <!-- Footer Logo -->
+                        <div class="footer-logo">
+                            <a href="#"><img src="./img/logo/logo2.png" style="width: 150px" alt="" /></a>
+                        </div>
+                        <!-- Social Info -->
+                        <div class="social-info">
+                            <a href="#"><i class="ti-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="ti-twitter-alt" aria-hidden="true"></i></a>
+                            <a href="#"><i class="ti-linkedin" aria-hidden="true"></i></a>
+                            <a href="#"><i class="ti-pinterest" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </footer>
+    <!-- Footer Area End -->
 
-        <!-- Header Area Start -->
-        <header class="header-area">
-            <!-- Main Header Start -->
-            <div class="main-header-area">
-                <div class="classy-nav-container breakpoint-off">
-                    <div class="container">
-                        <!-- Classy Menu -->
-                        <nav
-                            class="classy-navbar justify-content-between"
-                            id="alimeNav"
-                        >
-                            <!-- Logo -->
-                            <a class="nav-brand" href="/"
-                                ><img
-                                    src="./img/logo/logo4.png"
-                                    style="width: 250px"
-                                    alt=""
-                            /></a>
+    <!-- **** All JS Files ***** -->
+    <!-- jQuery 2.2.4 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Popper -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- All Plugins -->
+    <script src="js/alime.bundle.js"></script>
+    <!-- Active -->
+    <script src="js/default-assets/active.js"></script>
+</body>
 
-                            <!-- Navbar Toggler -->
-                            <div class="classy-navbar-toggler">
-                                <span class="navbarToggler"
-                                    ><span></span><span></span><span></span
-                                ></span>
-                            </div>
-
-                            <!-- Menu -->
-                            <div class="classy-menu">
-                                <!-- Menu Close Button -->
-                                <div class="classycloseIcon">
-                                    <div class="cross-wrap">
-                                        <span class="top"></span
-                                        ><span class="bottom"></span>
-                                    </div>
-                                </div>
-                                <!-- Nav Start -->
-                                <div class="classynav">
-                                    <ul id="nav">
-                                        <li>
-                                            <a href="/">Home</a>
-                                        </li>
-
-                                        <li class="active">
-                                            <a href="/about">About</a>
-                                        </li>
-                                        <li>
-                                            <a href="/our-crew">Our Crew</a>
-                                        </li>
-                                        <li>
-                                            <a href="/gallery">Gallery</a>
-                                        </li>
-                                        <li><a href="/cinema">Films</a></li>
-                                        <li>
-                                            <a href="/contact">Contact</a>
-                                        </li>
-                                    </ul>
-
-                                    <!-- Search Icon -->
-                                    <div
-                                        class="search-icon"
-                                        data-toggle="modal"
-                                        data-target="#searchModal"
-                                    >
-                                        <i class="ti-search"></i>
-                                    </div>
-                                </div>
-                                <!-- Nav End -->
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Header Area End -->
-
-        <!-- start: About us banners -->
-        <section>
-            <div class="welcome-slides owl-carousel">
-                <!-- <% for(let member of teamMembers) { %> -->
-                <!-- Single Slide -->
-                <div
-                    class="single-welcome-slide bg-img bg-overlay"
-                    style="background-image: url('./img/bg-img/1.jpg')"
-                >
-                    <div class="container h-50"></div>
-                </div>
-                <div
-                    class="single-welcome-slide bg-img bg-overlay"
-                    style="background-image: url('./img/bg-img/2.jpg')"
-                >
-                    <div class="container h-50"></div>
-                </div>
-                <div
-                    class="single-welcome-slide bg-img bg-overlay"
-                    style="background-image: url('./img/bg-img/3.jpg')"
-                >
-                    <div class="container h-50"></div>
-                </div>
-                <div
-                    class="single-welcome-slide bg-img bg-overlay"
-                    style="background-image: url('./img/bg-img/4.jpg')"
-                >
-                    <div class="container h-50"></div>
-                </div>
-                <div
-                    class="single-welcome-slide bg-img bg-overlay"
-                    style="background-image: url('./img/bg-img/5.jpg')"
-                >
-                    <div class="container h-50"></div>
-                </div>
-                <div
-                    class="single-welcome-slide bg-img bg-overlay"
-                    style="background-image: url('./img/bg-img/6.jpg')"
-                >
-                    <div class="container h-50"></div>
-                </div>
-
-                <!-- <% } %> -->
-            </div>
-        </section>
-        <!-- end: About us banners -->
-
-        <!-- Footer Area Start -->
-        <footer class="footer-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div
-                            class="footer-content d-flex align-items-center justify-content-between"
-                        >
-                            <!-- Copywrite Text -->
-                            <div class="copywrite-text">
-                                <p>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;
-                                    <script>
-                                        document.write(
-                                            new Date().getFullYear()
-                                        );
-                                    </script>
-                                    All rights reserved | This template is made
-                                    with
-                                    <i
-                                        class="fa fa-heart-o"
-                                        aria-hidden="true"
-                                    ></i>
-                                    by
-                                    <a
-                                        href="https://colorlib.com"
-                                        target="_blank"
-                                        >Colorlib</a
-                                    >
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                </p>
-                            </div>
-                            <!-- Footer Logo -->
-                            <div class="footer-logo">
-                                <a href="#"
-                                    ><img
-                                        src="./img/logo/logo2.png"
-                                        style="width: 150px"
-                                        alt=""
-                                /></a>
-                            </div>
-                            <!-- Social Info -->
-                            <div class="social-info">
-                                <a href="#"
-                                    ><i
-                                        class="ti-facebook"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a href="#"
-                                    ><i
-                                        class="ti-twitter-alt"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a href="#"
-                                    ><i
-                                        class="ti-linkedin"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a href="#"
-                                    ><i
-                                        class="ti-pinterest"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Footer Area End -->
-
-        <!-- **** All JS Files ***** -->
-        <!-- jQuery 2.2.4 -->
-        <script src="js/jquery.min.js"></script>
-        <!-- Popper -->
-        <script src="js/popper.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- All Plugins -->
-        <script src="js/alime.bundle.js"></script>
-        <!-- Active -->
-        <script src="js/default-assets/active.js"></script>
-    </body>
 </html>
