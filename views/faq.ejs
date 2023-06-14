@@ -142,18 +142,38 @@
         <!-- Header Area End -->
 
         <!-- start: About us banners -->
-        <section>
-            <div class="welcome-slides owl-carousel h-100">
-                <% for(let img of aboutImages) { %>
+        <section style="padding-top: 100px;" class="card card-body">
+            <div class="accordion" id="accordionExample">
+                <% for(let faq of faqList) { %>
                 <!-- Single Slide -->
-                <div
-                    id="<%= img.id %>"
-                    class="bg-img bg-overlay d-flex min-vh-100"
-                >
-                    <div class="my-auto w-100">
-                        <img src="<%= img.url %>" />
+                <div class="card">
+                    <div class="card-header" id="faq<%= faq.id %>">
+                        <h2 class="mb-0">
+                            <button
+                                class="btn text-primary btn-block text-left"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#collapse<%= faq.id %>"
+                                aria-expanded="true"
+                                aria-controls="collapse<%= faq.id %>"
+                            >
+                                <%= faq.question %>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div
+                        id="collapse<%= faq.id %>"
+                        class="collapse"
+                        aria-labelledby="headingOne"
+                        data-parent="#accordionExample"
+                    >
+                        <div class="card-body">
+                            <%= faq.answer %>
+                        </div>
                     </div>
                 </div>
+
                 <% } %>
             </div>
         </section>

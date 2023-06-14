@@ -9,6 +9,7 @@ const clientApiRouter = require("./route/client-api");
 const session = require("express-session");
 const flash = require("express-flash");
 const MediaService = require("./service/media-service");
+const faqList = require("./faq.json");
 
 app.use(fileUpload());
 app.use(express.json());
@@ -51,6 +52,10 @@ app.get("/", async (req, res) => {
 app.get("/about", async (req, res) => {
     const aboutImages = await MediaService.getAlboutImages();
     res.render("about.ejs", { aboutImages });
+});
+
+app.get("/faq", async (req, res) => {
+    res.render("faq.ejs",{faqList});
 });
 
 app.get("/our-crew", async (req, res) => {
