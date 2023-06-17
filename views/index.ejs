@@ -79,9 +79,9 @@
                             <!-- Logo -->
                             <a class="nav-brand" href="/"
                                 ><img
-                                    src="./img/logo/logo2.png"
+                                    src="./img/logo/logo4.png"
                                     alt=""
-                                    style="width: 250px"
+                                    style="width: 200px"
                             /></a>
 
                             <!-- Navbar Toggler -->
@@ -110,23 +110,27 @@
                                         <li>
                                             <a href="/about">About</a>
                                         </li>
+                                        <!-- <!-- <li>
+                                            <a href="/our-crew">Our Crew</a>
+                                        </li> -->
                                         <li>
                                             <a href="/gallery">Gallery</a>
                                         </li>
-                                        <li><a href="/cinema">Cinema</a></li>
+                                        <li><a href="/cinema">Films</a></li>
+                                        <li><a href="/faq">FAQ</a></li>
                                         <li>
                                             <a href="/contact">Contact</a>
                                         </li>
                                     </ul>
 
                                     <!-- Search Icon -->
-                                    <div
+                                    <!-- <!-- <div
                                         class="search-icon"
                                         data-toggle="modal"
                                         data-target="#searchModal"
                                     >
                                         <i class="ti-search"></i>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- Nav End -->
                             </div>
@@ -139,88 +143,15 @@
 
         <!-- Welcome Area Start -->
         <section class="welcome-area">
-            <div class="welcome-slides owl-carousel">
-                <% for(let member of teamMembers) { %>
-                <!-- Single Slide -->
-                <div
-                    class="single-welcome-slide bg-img bg-overlay"
-                    style="background-image: url('<%= member.imgUrl %>')"
-                >
-                    <div class="container h-100">
-                        <div class="row h-100 align-items-center">
-                            <!-- Welcome Text -->
-                            <div class="col-12 col-lg-8 col-xl-6">
-                                <div class="welcome-text">
-                                    <h2
-                                        data-animation="bounceInDown"
-                                        data-delay="900ms"
-                                    >
-                                        Hello <br />I'm <%= member.name %>
-                                    </h2>
-                                    <p
-                                        data-animation="bounceInDown"
-                                        data-delay="500ms"
-                                    >
-                                        <%= member.about %>
-                                    </p>
-                                    <div
-                                        class="hero-btn-group"
-                                        data-animation="bounceInDown"
-                                        data-delay="100ms"
-                                    >
-                                        <a
-                                            href="/contact"
-                                            class="btn alime-btn mb-3 mb-sm-0 mr-4"
-                                            >Get a Quote</a
-                                        >
-                                        <a
-                                            class="hero-mail-contact"
-                                            href="<%= member.contact %>"
-                                        >
-                                            📞 <%= member.contact %>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <% } %>
+            <div style="width: 100%">
+                <img src="./img/bg-img/home-banner.gif" />
             </div>
         </section>
         <!-- Welcome Area End -->
 
         <!-- Introduction Start -->
-        <div
-            style="
-                width: 100%;
-                background-color: #6ec1e4;
-                padding: 100px 10px;
-                text-align: center;
-            "
-        >
-            <div>
-                <h2 style="font-family: 'Rajdhani', sans-serif">
-                    We're
-                    <span style="font-family: 'Gloria Hallelujah', sans-serif">
-                        ZeedStudio!
-                    </span>
-                    <br />
-                    A small and enthusiastic party <br />
-                    delivering quality work.
-                </h2>
-                <br /><br />
-                <p
-                    style="
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
-                            sans-serif;
-                        font-size: large;
-                    "
-                >
-                    Photographers don't take pictures. They create images.!<br />
-                    - Mark Denman
-                </p>
-            </div>
+        <div style="width: 100%">
+            <img src="./img/bg-img/home-quote.jpeg" />
         </div>
 
         <div style="width: 100%; padding: 50px 10px; text-align: center">
@@ -388,7 +319,7 @@
                             Contact Us
                         </h2>
                     </a>
-                    <h4>+91 679802340</h4>
+                    <h4>+91 9002516322</h4>
                 </div>
             </div>
         </section>
@@ -412,8 +343,8 @@
                                             new Date().getFullYear()
                                         );
                                     </script>
-                                    All rights reserved | This template is made
-                                    with
+                                    All rights reserved | by ZeedStudio | This
+                                    template is made with
                                     <i
                                         class="fa fa-heart-o"
                                         aria-hidden="true"
@@ -438,7 +369,9 @@
                             </div>
                             <!-- Social Info -->
                             <div class="social-info">
-                                <a href="#"
+                                <a
+                                    target="_blank"
+                                    href="https://www.facebook.com/people/Zeed-studio/100075977942375/"
                                     ><i
                                         class="ti-facebook"
                                         aria-hidden="true"
@@ -450,15 +383,11 @@
                                         aria-hidden="true"
                                     ></i
                                 ></a>
-                                <a href="#"
+                                <a
+                                    href="https://www.instagram.com/zeedstudio__official/"
+                                    target="_blank"
                                     ><i
-                                        class="ti-linkedin"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a href="#"
-                                    ><i
-                                        class="ti-pinterest"
+                                        class="ti-instagram"
                                         aria-hidden="true"
                                     ></i
                                 ></a>
