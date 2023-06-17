@@ -107,30 +107,32 @@
                                             <a href="/">Home</a>
                                         </li>
 
-                                        <li class="active">
+                                        <li>
                                             <a href="/about">About</a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="/our-crew">Our Crew</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="/gallery">Gallery</a>
                                         </li>
                                         <li><a href="/cinema">Films</a></li>
-                                        <li><a href="/faq">FAQ</a></li>
+                                        <li class="active">
+                                            <a href="/faq">FAQ</a>
+                                        </li>
                                         <li>
                                             <a href="/contact">Contact</a>
                                         </li>
                                     </ul>
 
                                     <!-- Search Icon -->
-                                    <div
+                                    <!-- <div
                                         class="search-icon"
                                         data-toggle="modal"
                                         data-target="#searchModal"
                                     >
                                         <i class="ti-search"></i>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- Nav End -->
                             </div>
@@ -141,8 +143,41 @@
         </header>
         <!-- Header Area End -->
 
+        <!-- Breadcrumb Area Start -->
+        <section
+            class="breadcrumb-area bg-img bg-overlay jarallax"
+            style="background-image: url('https://picsum.photos/1001')"
+        >
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="breadcrumb-content text-center">
+                            <h2 class="page-title">FAQ</h2>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item">
+                                        <a href="index.html"
+                                            ><i class="icon_house_alt"></i>
+                                            Home</a
+                                        >
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        FAQ
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Breadcrumb Area End -->
+
         <!-- start: About us banners -->
-        <section style="padding-top: 100px;" class="card card-body">
+        <section style="padding-top: 100px" class="card card-body">
             <div class="accordion" id="accordionExample">
                 <% for(let faq of faqList) { %>
                 <!-- Single Slide -->
@@ -168,9 +203,7 @@
                         aria-labelledby="headingOne"
                         data-parent="#accordionExample"
                     >
-                        <div class="card-body">
-                            <%= faq.answer %>
-                        </div>
+                        <div class="card-body"><%= faq.answer %></div>
                     </div>
                 </div>
 
@@ -197,8 +230,8 @@
                                             new Date().getFullYear()
                                         );
                                     </script>
-                                    All rights reserved | This template is made
-                                    with
+                                    All rights reserved | by ZeedStudio | This
+                                    template is made with
                                     <i
                                         class="fa fa-heart-o"
                                         aria-hidden="true"
@@ -223,7 +256,9 @@
                             </div>
                             <!-- Social Info -->
                             <div class="social-info">
-                                <a href="#"
+                                <a
+                                    target="_blank"
+                                    href="https://www.facebook.com/people/Zeed-studio/100075977942375/"
                                     ><i
                                         class="ti-facebook"
                                         aria-hidden="true"
@@ -235,15 +270,11 @@
                                         aria-hidden="true"
                                     ></i
                                 ></a>
-                                <a href="#"
+                                <a
+                                    href="https://www.instagram.com/zeedstudio__official/"
+                                    target="_blank"
                                     ><i
-                                        class="ti-linkedin"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a href="#"
-                                    ><i
-                                        class="ti-pinterest"
+                                        class="ti-instagram"
                                         aria-hidden="true"
                                     ></i
                                 ></a>

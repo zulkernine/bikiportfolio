@@ -14,6 +14,7 @@ class MediaService {
                         allImages[i].filter = "wedding";
                     }
                     break;
+                case "ONE_DAY_EVENTS":
                 case "BIRTH_DAY":
                     {
                         allImages[i].filter = "birthday";
@@ -24,7 +25,6 @@ class MediaService {
                         allImages[i].filter = "models";
                     }
                     break;
-                case "ONE_DAY_EVENTS":
                 case "OTHERS":
                     {
                         allImages[i].filter = "others";
