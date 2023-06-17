@@ -9,6 +9,7 @@ const clientApiRouter = require("./route/client-api");
 const session = require("express-session");
 const flash = require("express-flash");
 const MediaService = require("./service/media-service");
+const faqList = require("./faq.json");
 
 app.use(fileUpload());
 app.use(express.json());
@@ -49,8 +50,17 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/about", async (req, res) => {
+    const aboutImages = await MediaService.getAlboutImages();
+    res.render("about.ejs", { aboutImages });
+});
+
+app.get("/faq", async (req, res) => {
+    res.render("faq.ejs",{faqList});
+});
+
+app.get("/our-crew", async (req, res) => {
     const teamMembers = await MediaService.getAllTeamMembers();
-    res.render("about.ejs",{teamMembers});
+    res.render("crew.ejs", { teamMembers });
 });
 
 app.get("/cinema", async (req, res) => {
@@ -66,8 +76,8 @@ app.get("/contact", async (req, res) => {
 
 app.get("/gallery", async (req, res) => {
     const allImages = await MediaService.getAllImages(true);
-    const recentVideos = await MediaService.getRecentVideos();
-    res.render("gallery.ejs", { allImages,"allVideos":recentVideos });
+    // const recentVideos = await MediaService.getRecentVideos();
+    res.render("gallery.ejs", { allImages });
 });
 
 app.get("/single-blog", (req, res) => {

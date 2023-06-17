@@ -4,13 +4,15 @@
     "description": "A simple Portfolio with admin prtal support ( upload image/video )",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
     },
     "author": "Mohiuddin Mondal (zulkernine)",
     "license": "MIT",
     "dependencies": {
         "aws-sdk": "^2.1228.0",
         "bcrypt": "^5.0.1",
+        "dotenv": "^6.0.0",
         "ejs": "^3.1.8",
         "express": "^4.18.1",
         "express-ejs-layouts": "^2.5.1",

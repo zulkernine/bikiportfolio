@@ -1,221 +1,139 @@
-<!DOCTYPE html>
-<html>
+<body>
+    <!DOCTYPE html>
+    <html>
+
     <head>
         <%- include('../partials/head'); %>
-        <style></style>
+            <title>Admin Portal</title>
     </head>
 
-    <body>
-        <header>
-            <!-- Background image -->
-            <div
-                class="p-5 text-center bg-image mb-4"
-                style="
-                    background-image: url('https://picsum.photos/1000');
-                    height: 400px;
-                    object-fit: contain;
-                "
-            >
-                <div class="mask" style="color: 'black'">
-                    <div
-                        class="d-flex justify-content-center align-items-center h-100"
-                    >
-                        <div class="text-black">
-                            <h1 class="mb-3">ZeedStudio</h1>
-                            <h4 class="mb-3">Admin</h4>
-
-                            <form method="post" action="/logout">
-                                <button
-                                    type="submit"
-                                    class="btn btn-danger btn-lg"
-                                >
-                                    Logout
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="nav-brand" href="/">
+                <img src="./img/logo/logo4.png" alt="" style="width: 200px" />
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="#upload_img-video" class="nav-item nav-link">Upload Image/Video</a>
+                    <a href="#all_images" class="nav-item nav-link">All Images</a>
+                    <a href="#all_videos" class="nav-item nav-link">All Videos</a>
+                    <a href="#about_images" class="nav-item nav-link">About</a>
+                </div>
+                <div class="navbar-nav ms-auto">
+                    <form method="post" action="/logout">
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Logout
+                        </button>
+                    </form>
                 </div>
             </div>
-            <!-- Background image -->
-        </header>
-        <!-- Alerts -->
-        <div>
-            <% if(messages.info) {%>
-            <div
-                class="alert alert-warning alert-dismissible fade show"
-                role="alert"
-            >
-                <button
-                    type="button"
-                    class="btn"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                >
+        </div>
+    </nav>
+    <div style="height: 100px;"></div>
+
+    <!-- Alerts -->
+    <div>
+        <% if(messages.info) {%>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="btn" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <%= messages.info %>
             </div>
             <% } %>
-        </div>
+    </div>
 
-        <div class="container-xl">
-            <!-- Upload Forms -->
-            <div class="accordion mb-4" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header card-header" id="headingOne">
-                        <button
-                            class="accordion-button"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne"
-                            aria-expanded="true"
-                            aria-controls="collapseOne"
-                        >
-                            <h4>Upload Image</h4>
-                        </button>
-                    </h2>
-                    <div
-                        id="collapseOne"
-                        class="accordion-collapse collapse show"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample"
-                    >
-                        <div class="accordion-body">
-                            <form
-                                class="row"
-                                action="/admin/images"
-                                method="post"
-                                enctype="multipart/form-data"
-                                id="uploadImagesForm"
-                            >
-                                <div class="mb-3 col-auto">
-                                    <input
-                                        class="form-control"
-                                        type="file"
-                                        id="formFileMultiple"
-                                        multiple
-                                        name="images"
-                                        accept="image/*"
-                                    />
-                                </div>
-                                <div class="col-auto">
-                                    <select
-                                        class="form-select"
-                                        aria-label="Tag"
-                                        name="tag"
-                                    >
-                                        <option selected value="WEDDING">
-                                            WEDDING
-                                        </option>
-                                        <option value="PRE_WEDDING">
-                                            PRE_WEDDING
-                                        </option>
-                                        <option value="BIRTH_DAY">
-                                            BIRTH_DAY
-                                        </option>
-                                        <option value="CELEBRITY">
-                                            CELEBRITY
-                                        </option>
-                                        <option value="OTHERS">OTHERS</option>
-                                        <option value="ONE_DAY_EVENTS">
-                                            ONE_DAY_EVENTS
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-auto">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-outline-primary"
-                                    >
-                                        Publish
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo"
-                            aria-expanded="false"
-                            aria-controls="collapseTwo"
-                        >
-                            <h4>Upload Video</h4>
-                        </button>
-                    </h2>
-                    <div
-                        id="collapseTwo"
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample"
-                    >
-                        <div class="accordion-body">
-                            <form
-                                class="row"
-                                action="/admin/videos"
-                                method="post"
-                                enctype="multipart/form-data"
-                            >
-                                <div class="mb-3 col-auto">
-                                    <label
-                                        for="thumbnailImageFile"
-                                        class="form-label"
-                                        >Select thumbnail image</label
-                                    >
-                                    <input
-                                        class="form-control"
-                                        type="file"
-                                        id="thumbnailImageFile"
-                                        multiple
-                                        name="thumbnail"
-                                        accept="image/*"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label
-                                        for="videoDescription"
-                                        class="form-label"
-                                        >Video URL(Youtube)</label
-                                    >
-                                    <input
-                                        type="url"
-                                        class="form-control"
-                                        id="videoDescription"
-                                        name="url"
-                                        placeholder="https://you.tube/dsalf340dsjaassa9d0"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label
-                                        for="exampleFormControlTextarea1"
-                                        class="form-label"
-                                        >Description</label
-                                    >
-                                    <textarea
-                                        class="form-control"
-                                        id="exampleFormControlTextarea1"
-                                        rows="3"
-                                        name="description"
-                                    ></textarea>
-                                </div>
-                                <div class="col-auto">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-outline-primary"
-                                    >
-                                        Publish
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+    <div class="container-xl" id="upload_img-video" style="padding-top: 75px;">
+        <!-- Upload Forms -->
+        <div class="accordion mb-4" id="accordionExample">
+            <div class="accordion-item" id="upload_image">
+                <h2 class="accordion-header card-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h4>Upload Image</h4>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form class="row" action="/admin/images" method="post" enctype="multipart/form-data"
+                            id="uploadImagesForm">
+                            <div class="mb-3 col-auto">
+                                <input class="form-control" type="file" id="formFileMultiple" multiple name="images"
+                                    accept="image/*" />
+                            </div>
+                            <div class="col-auto">
+                                <select class="form-select" aria-label="Tag" name="tag">
+                                    <option selected value="WEDDING">
+                                        WEDDING
+                                    </option>
+                                    <option value="PRE_WEDDING">
+                                        PRE_WEDDING
+                                    </option>
+                                    <option value="BIRTH_DAY">
+                                        BIRTH_DAY
+                                    </option>
+                                    <option value="CELEBRITY">
+                                        CELEBRITY
+                                    </option>
+                                    <option value="OTHERS">OTHERS</option>
+                                    <option value="ONE_DAY_EVENTS">
+                                        ONE_DAY_EVENTS
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    Publish
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+
+            <div class="accordion-item" id="upload_video">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <h4>Upload Video</h4>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form class="row" action="/admin/videos" method="post" enctype="multipart/form-data">
+                            <div class="mb-3 col-auto">
+                                <label for="thumbnailImageFile" class="form-label">Select thumbnail image</label>
+                                <input class="form-control" type="file" id="thumbnailImageFile" multiple
+                                    name="thumbnail" accept="image/*" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="videoDescription" class="form-label">Video URL(Youtube)</label>
+                                <input type="url" class="form-control" id="videoDescription" name="url"
+                                    placeholder="https://you.tube/dsalf340dsjaassa9d0" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                    name="description"></textarea>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    Publish
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="all_images">
+            <h1 style="padding-top: 75px;">All Images</h1>
 
             <!-- Show Uploaded images -->
             <table class="table align-middle mb-4 bg-white">
@@ -229,62 +147,48 @@
                 </thead>
                 <tbody>
                     <% for(var img of allImages) { %>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img
-                                    src="<%= img.url %>"
-                                    style="width: 200px; height: 100px"
-                                />
-                            </div>
-                        </td>
-                        <td>
-                            <p class="fw-normal mb-1">
-                                <%= new
-                                Date(img.uploadedAt*1000).toLocaleString() %>
-                            </p>
-                        </td>
-                        <td><%= img.tag %></td>
-                        <td>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox"
-                                id="flexSwitchCheckDefault" <%=img.isRecent ?
-                                "checked" : "" %>
-                                onclick="handleRecentImage(this, '<%=img.id%>'
-                                );" />
-                                <label
-                                    class="form-check-label"
-                                    for="flexSwitchCheckDefault"
-                                    >Recent</label
-                                >
-                            </div>
-                            <button
-                                type="button"
-                                class="btn btn-outline-danger btn-sm"
-                                onclick="deleteImage( '<%= img.id %>' )"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    fill="currentColor"
-                                    class="bi bi-trash"
-                                    viewBox="0 0 16 16"
-                                >
-                                    <path
-                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-                                    />
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                                    />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <% } %>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="<%= img.url %>" style="width: 200px; height: 100px" />
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">
+                                    <%= new Date(img.uploadedAt*1000).toLocaleString() %>
+                                </p>
+                            </td>
+                            <td>
+                                <%= img.tag %>
+                            </td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                                        <%=img.isRecent ? "checked" : "" %>
+                                    onclick="handleRecentImage(this, '<%=img.id%>'
+                                        );" />
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">Recent</label>
+                                </div>
+                                <button type="button" class="btn btn-outline-danger btn-sm"
+                                    onclick="deleteImage( '<%= img.id %>' )">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                        <path fill-rule="evenodd"
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        <% } %>
                 </tbody>
             </table>
+        </section>
+
+
+        <section id="all_videos" style="padding-top: 75px;">
+            <h1>All Videos</h1>
 
             <!-- Show Uploaded Videos -->
             <table class="table align-middle mb-4 bg-white">
@@ -298,279 +202,312 @@
                 </thead>
                 <tbody>
                     <% for(var vid of allVideos) { %>
-                    <tr>
-                        <td>
-                            <a href="<%= vid.url %>" target="_blank">
-                                <div
-                                    class="d-flex align-items-center"
-                                    style="position: relative"
-                                >
-                                    <img
-                                        src="<%= vid.thumbnailUrl %>"
-                                        style="
+                        <tr>
+                            <td>
+                                <a href="<%= vid.url %>" target="_blank">
+                                    <div class="d-flex align-items-center" style="position: relative">
+                                        <img src="<%= vid.thumbnailUrl %>" style="
                                             width: 200px;
                                             height: 100px;
                                             opacity: 0.6;
-                                        "
-                                    />
-                                    <div
-                                        style="
+                                        " />
+                                        <div style="
                                             position: absolute;
                                             display: block;
                                             top: 25px;
                                             left: 75px;
-                                        "
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            version="1.1"
-                                            id="Capa_1"
-                                            x="0px"
-                                            y="0px"
-                                            width="50px"
-                                            height="50px"
-                                            viewBox="0 0 408.221 408.221"
-                                            style="
+                                        ">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
+                                                x="0px" y="0px" width="50px" height="50px" viewBox="0 0 408.221 408.221"
+                                                style="
                                                 enable-background: new 0 0
                                                     408.221 408.221;
-                                            "
-                                            xml:space="preserve"
-                                        >
-                                            <g>
+                                            " xml:space="preserve">
                                                 <g>
-                                                    <path
-                                                        d="M204.11,0C91.388,0,0,91.388,0,204.111c0,112.725,91.388,204.11,204.11,204.11c112.729,0,204.11-91.385,204.11-204.11    C408.221,91.388,316.839,0,204.11,0z M286.547,229.971l-126.368,72.471c-17.003,9.75-30.781,1.763-30.781-17.834V140.012    c0-19.602,13.777-27.575,30.781-17.827l126.368,72.466C303.551,204.403,303.551,220.217,286.547,229.971z"
-                                                    />
+                                                    <g>
+                                                        <path
+                                                            d="M204.11,0C91.388,0,0,91.388,0,204.111c0,112.725,91.388,204.11,204.11,204.11c112.729,0,204.11-91.385,204.11-204.11    C408.221,91.388,316.839,0,204.11,0z M286.547,229.971l-126.368,72.471c-17.003,9.75-30.781,1.763-30.781-17.834V140.012    c0-19.602,13.777-27.575,30.781-17.827l126.368,72.466C303.551,204.403,303.551,220.217,286.547,229.971z" />
+                                                    </g>
                                                 </g>
-                                            </g>
-                                        </svg>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <div class="row" id="description<%= vid.id %>">
+                                    <div class="col-10 mb-3">
+                                        <p class="fw-normal mb-1" style="height: 105px; overflow: auto">
+                                            <%= vid.description %>
+                                        </p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-outline-warning btn-sm"
+                                            onclick="editVideoDes( '<%= vid.id %>' )">
+                                            Edit
+                                        </button>
                                     </div>
                                 </div>
-                            </a>
-                        </td>
-                        <td>
-                            <div class="row" id="description<%= vid.id %>">
-                                <div class="col-10 mb-3">
-                                    <p
-                                        class="fw-normal mb-1"
-                                        style="height: 105px; overflow: auto"
-                                    >
-                                        <%= vid.description %>
-                                    </p>
-                                </div>
-                                <div class="col-auto">
-                                    <button
-                                        class="btn btn-outline-warning btn-sm"
-                                        onclick="editVideoDes( '<%= vid.id %>' )"
-                                    >
-                                        Edit
-                                    </button>
-                                </div>
-                            </div>
-                            <div
-                                class="row"
-                                style="display: none"
-                                id="editDes<%= vid.id %>"
-                            >
-                                <div class="col-10">
-                                    <textarea
-                                        class="form-control"
-                                        rows="3"
-                                        id="editDesInp<%= vid.id %>"
-                                        placeholder="Enter new description"
-                                    >
+                                <div class="row" style="display: none" id="editDes<%= vid.id %>">
+                                    <div class="col-10">
+                                        <textarea class="form-control" rows="3" id="editDesInp<%= vid.id %>"
+                                            placeholder="Enter new description">
                                         <%= vid.description %>
                                     </textarea>
+                                    </div>
+                                    <div class="col-auto row">
+                                        <button class="btn btn-outline-primary btn-sm m-2 col-auto"
+                                            onclick="saveVideoDes( '<%= vid.id %>' )">
+                                            Save
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm m-2 col-auto"
+                                            onclick="cancelEditVideo( '<%= vid.id %>' )">
+                                            Cancel
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col-auto row">
-                                
-                                    <button
-                                        class="btn btn-outline-primary btn-sm m-2 col-auto"
-                                        onclick="saveVideoDes( '<%= vid.id %>' )"
-                                    >
-                                        Save
-                                    </button>
-                                    <button
-                                        class="btn btn-outline-danger btn-sm m-2 col-auto"
-                                        onclick="cancelEditVideo( '<%= vid.id %>' )"
-                                    >
-                                        Cancel
-                                    </button>
-                                    
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="fw-normal mb-1">
-                                <%= new
-                                Date(vid.uploadedAt*1000).toLocaleString() %>
-                            </p>
-                        </td>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">
+                                    <%= new Date(vid.uploadedAt*1000).toLocaleString() %>
+                                </p>
+                            </td>
 
-                        <td>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox"
-                                id="flexSwitchCheckDefault" <%=vid.isRecent ?
-                                "checked" : "" %>
-                                onclick="handleRecentVideo(this, '<%=vid.id%>'
-                                );" />
-                                <label
-                                    class="form-check-label"
-                                    for="flexSwitchCheckDefault"
-                                    >Recent</label
-                                >
-                            </div>
-                            <button
-                                type="button"
-                                class="btn btn-outline-danger btn-sm"
-                                onclick="deleteVideo( '<%= vid.id %>' )"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    fill="currentColor"
-                                    class="bi bi-trash"
-                                    viewBox="0 0 16 16"
-                                >
-                                    <path
-                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-                                    />
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                                    />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <% } %>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                                        <%=vid.isRecent ? "checked" : "" %>
+                                    onclick="handleRecentVideo(this, '<%=vid.id%>'
+                                        );" />
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">Recent</label>
+                                </div>
+                                <button type="button" class="btn btn-outline-danger btn-sm"
+                                    onclick="deleteVideo( '<%= vid.id %>' )">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                        <path fill-rule="evenodd"
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        <% } %>
                 </tbody>
             </table>
-        </div>
-        <script>
-            function deleteImage(id) {
-                console.log(id);
-                $.ajax({
-                    type: "delete",
-                    url: "/admin/images",
-                    data: JSON.stringify({ id }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
-                        location.reload();
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert("Can't delete, try again");
-                        console.log(errorThrown);
-                    },
-                });
-            }
+        </section>
 
-            function handleRecentImage(cb, id) {
-                $.ajax({
-                    type: "patch",
-                    url: "/admin/images",
-                    data: JSON.stringify({
-                        id,
-                        updateKey: "isRecent",
-                        updateValue: cb.checked,
-                    }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
-                        // location.reload();
-                        console.log("Successfully changed status");
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert("Can't change status, try again");
-                        console.log(errorThrown);
-                        cb.checked = !cb.checked;
-                    },
-                });
-            }
+        <section id="about_images" style="padding-top: 75px;" >
+            <h1>About section images</h1>
+            <div class="card mb-10">
+                <h2 class="card-header" >
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h4>Upload About images</h4>
+                    </button>
+                </h2>
+                <div class="card-body" >
+                    <div >
+                        <form class="row" action="/admin/about" method="post" enctype="multipart/form-data"
+                            id="uploadImagesForm">
+                            <div class="mb-3 col-auto">
+                                <input class="form-control" type="file" id="formFileMultiple" multiple name="images"
+                                    accept="image/*" />
+                            </div>
+                            
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Show Uploaded images -->
+            <table class="table align-middle mb-4 bg-white">
+                <thead class="bg-light">
+                    <tr>
+                        <th>Preview</th>
+                        <th>Upload Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var img of aboutImages) { %>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="<%= img.url %>" style="width: 200px; height: 100px" />
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">
+                                    <%= new Date(img.uploadedAt*1000).toLocaleString() %>
+                                </p>
+                            </td>
+                            
+                            <td>
+                                
+                                <button type="button" class="btn btn-outline-danger btn-sm"
+                                    onclick="deleteAboutImage( '<%= img.id %>' )">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                        <path fill-rule="evenodd"
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </section>
+<!-- f4b793ff-ed95-426a-95d2-af2c448da52b2.jpg , a3d4506f-55af-471b-a105-0ef679d83e853.jpg-->
+    </div>
+    <script>
+        function deleteImage(id) {
+            console.log(id);
+            $.ajax({
+                type: "delete",
+                url: "/admin/images",
+                data: JSON.stringify({ id }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Can't delete, try again");
+                    console.log(errorThrown);
+                },
+            });
+        }
 
-            function handleRecentVideo(cb, id) {
-                $.ajax({
-                    type: "patch",
-                    url: "/admin/videos",
-                    data: JSON.stringify({
-                        id,
-                        updateKey: "isRecent",
-                        updateValue: cb.checked,
-                    }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
-                        // location.reload();
-                        console.log("Successfully changed status");
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert("Can't change status, try again");
-                        console.log(errorThrown);
-                        cb.checked = !cb.checked;
-                    },
-                });
-            }
+        function deleteAboutImage(id) {
+            console.log(id);
+            $.ajax({
+                type: "delete",
+                url: "/admin/about",
+                data: JSON.stringify({ id }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Can't delete, try again");
+                    console.log(errorThrown);
+                },
+            });
+        }
 
-            function deleteVideo(id) {
-                console.log(id);
-                $.ajax({
-                    type: "delete",
-                    url: "/admin/videos",
-                    data: JSON.stringify({ id }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
-                        location.reload();
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert("Can't delete, try again");
-                        console.log(errorThrown);
-                    },
-                });
-            }
+        function handleRecentImage(cb, id) {
+            $.ajax({
+                type: "patch",
+                url: "/admin/images",
+                data: JSON.stringify({
+                    id,
+                    updateKey: "isRecent",
+                    updateValue: cb.checked,
+                }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (data) {
+                    // location.reload();
+                    console.log("Successfully changed status");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Can't change status, try again");
+                    console.log(errorThrown);
+                    cb.checked = !cb.checked;
+                },
+            });
+        }
 
-            function editVideoDes(id) {
-                $("#editDes" + id).css("display", "block");
-                $("#description" + id).css("display", "none");
-            }
+        function handleRecentVideo(cb, id) {
+            $.ajax({
+                type: "patch",
+                url: "/admin/videos",
+                data: JSON.stringify({
+                    id,
+                    updateKey: "isRecent",
+                    updateValue: cb.checked,
+                }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (data) {
+                    // location.reload();
+                    console.log("Successfully changed status");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Can't change status, try again");
+                    console.log(errorThrown);
+                    cb.checked = !cb.checked;
+                },
+            });
+        }
 
-            // toggle styles
-            function cancelEditVideo(id) {
-                $("#editDes" + id).css("display", "none");
-                $("#description" + id).css("display", "block");
-            }
+        function deleteVideo(id) {
+            console.log(id);
+            $.ajax({
+                type: "delete",
+                url: "/admin/videos",
+                data: JSON.stringify({ id }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Can't delete, try again");
+                    console.log(errorThrown);
+                },
+            });
+        }
 
-            function saveVideoDes(id) {
-                console.log($('textarea#editDesInp'+id).val());
-                $.ajax({
-                    type: "patch",
-                    url: "/admin/videos",
-                    data: JSON.stringify({
-                        id,
-                        updateKey: "description",
-                        updateValue: $('#editDesInp'+id).val(),
-                    }),
-                    contentType: "application/json; charset=utf-8",
-                    traditional: true,
-                    success: function (data) {
-                        // location.reload();
-                        console.log("Successfully changed description");
-                        location.reload();
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert("Can't change Description, try again");
-                        console.log(errorThrown);
-                        cb.checked = !cb.checked;
-                    },
-                });
+        function editVideoDes(id) {
+            $("#editDes" + id).css("display", "block");
+            $("#description" + id).css("display", "none");
+        }
 
-                cancelEditVideo(id);
-            }
+        // toggle styles
+        function cancelEditVideo(id) {
+            $("#editDes" + id).css("display", "none");
+            $("#description" + id).css("display", "block");
+        }
 
+        function saveVideoDes(id) {
+            console.log($("textarea#editDesInp" + id).val());
+            $.ajax({
+                type: "patch",
+                url: "/admin/videos",
+                data: JSON.stringify({
+                    id,
+                    updateKey: "description",
+                    updateValue: $("#editDesInp" + id).val(),
+                }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (data) {
+                    // location.reload();
+                    console.log("Successfully changed description");
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Can't change Description, try again");
+                    console.log(errorThrown);
+                    cb.checked = !cb.checked;
+                },
+            });
 
-        </script>
-    </body>
+            cancelEditVideo(id);
+        }
+    </script>
+</body>
+
 </html>

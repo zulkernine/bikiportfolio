@@ -8,8 +8,8 @@ const MediaService = require("../service/media-service");
 router.get("/", async (req, res) => {
     const allImages = await MediaService.getAllImages();
     const allVideos = await MediaService.getAllVideos();
-
-    res.render("admin/index.ejs", { allImages, allVideos });
+    const aboutImages = await MediaService.getAlboutImages();
+    res.render("admin/index.ejs", { allImages, allVideos, aboutImages });
 });
 
 /* GET method for images and videos are available under client-api */
@@ -114,7 +114,9 @@ router.delete("/images", async (req, res) => {
         .delete(params)
         .promise()
         .then(
-            () => {
+            ({ Attributes: data }) => {
+                console.log(data);
+                Util.deleteImageByName(data.id);
                 res.json({
                     message: "delete successful",
                 });
@@ -199,7 +201,95 @@ router.delete("/videos", async (req, res) => {
         .delete(params)
         .promise()
         .then(
+            ({ Attributes: data }) => {
+                console.log(data);
+                Util.deleteImageByName(data.id);
+                res.json({
+                    message: "delete successful",
+                });
+            },
+            (error) => {
+                console.log(error);
+                res.status(500).send(error);
+            }
+        );
+});
+
+/**
+ * Upload about section images
+ */
+
+
+/**
+ * Post new about-image with
+ */
+router.post("/about", async (req, res) => {
+    var arr = [];
+    console.log(req.files);
+    if (Array.isArray(req.files.images) && req.files.images.length) { //multiple image
+        for (var image of req.files.images) {
+            const url = await Util.uploadImageAndGetUrl(image);
+            arr.push(url);
+            console.log("Image url: " + url);
+        }
+    } else if (req.files.images != null) { // single image
+        const url = await Util.uploadImageAndGetUrl(req.files.images);
+        arr.push(url);
+        console.log("Image url: " + url);
+    } else {
+        req.flash("info", "No files found!");
+        res.redirect("/admin");
+    }
+
+    const params = {
+        RequestItems: {
+            aboutImages: arr.map((url) => {
+                return {
+                    PutRequest: {
+                        Item: {
+                            uploadedAt: Math.trunc(Date.now() / 1000),
+                            id: url.split("/").pop(),
+                            url: url,
+                        },
+                    },
+                };
+            }),
+        },
+    };
+
+    await dynamodb
+        .batchWrite(params)
+        .promise()
+        .then(
             () => {
+                req.flash("info", "Successfully posted your images!");
+                res.redirect("/admin");
+            },
+            (error) => {
+                console.log(error);
+                res.status(500).send(error);
+            }
+        );
+});
+
+/**
+ * Delete an image with given unique id
+ */
+router.delete("/about", async (req, res) => {
+    const params = {
+        TableName: config.aboutTable,
+        Key: {
+            id: req.body.id,
+        },
+        ReturnValues: "ALL_OLD",
+    };
+    await dynamodb
+        .delete(params)
+        .promise()
+        .then(
+            ({ Attributes:data }) => {
+                console.log(data);
+                Util.deleteImageByName(data.id);
                 res.json({
                     message: "delete successful",
                 });
