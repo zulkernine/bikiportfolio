@@ -1,432 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+
+<head>
+    <%- include('./partials/head'); %>
 
         <!-- Title -->
         <title>
             ZeedStudio | Best Photography | Cinematography | Videography
         </title>
-        <meta
-            name="title"
-            content="ZeedStudio | Best Photography | Cinematography | Videography"
-        />
-        <meta
-            name="description"
-            content="Best Photoshoot and Cinematography or Videography for Birthday,Wedding,Pre-Wedding,Celebrities or any other events | ZeedStudio"
-        />
-        <meta name="author" content="Sarfaraj" />
-        <meta
-            name="keywords"
-            content="Photoshoot, Cinematography, Videography, Birthday Photoshoot, Wedding Photoshoot, Pre-wedding Photoshoot, Celebrity Photoshoot"
-        />
+        <meta name="title" content="ZeedStudio | Best Photography | Cinematography | Videography" />
+</head>
 
-        <!-- Favicon -->
-        <link rel="icon" href="./img/logo/favicon.ico" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Sofia|Gloria Hallelujah|Antic Slab|Rajdhani"
-        />
-        <!-- Stylesheet -->
-        <link rel="stylesheet" href="style.css" type="text/css" />
-    </head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
 
-    <body>
-        <!-- Preloader -->
-        <div id="preloader">
-            <div class="loader"></div>
+    <!-- Top Search Form Area -->
+    <div class="top-search-area">
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- Close -->
+                        <button type="button" class="btn close-btn" data-dismiss="modal">
+                            <i class="ti-close"></i>
+                        </button>
+                        <!-- Form -->
+                        <form action="index.html" method="post">
+                            <input type="search" name="top-search-bar" class="form-control"
+                                placeholder="Search and hit enter..." />
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /Preloader -->
+    </div>
 
-        <!-- Top Search Form Area -->
-        <div class="top-search-area">
-            <div
-                class="modal fade"
-                id="searchModal"
-                tabindex="-1"
-                role="dialog"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <!-- Close -->
-                            <button
-                                type="button"
-                                class="btn close-btn"
-                                data-dismiss="modal"
-                            >
-                                <i class="ti-close"></i>
-                            </button>
-                            <!-- Form -->
-                            <form action="index.html" method="post">
-                                <input
-                                    type="search"
-                                    name="top-search-bar"
-                                    class="form-control"
-                                    placeholder="Search and hit enter..."
-                                />
-                                <button type="submit">Search</button>
-                            </form>
+    <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <%- include('./partials/navbar',{currentTab: 'Home' }); %>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    <!-- Welcome Area Start -->
+    <section class="welcome-area">
+        <div class="welcome-slides owl-carousel">
+            <% for(let i=0;i<homePageInfo.images.length;i++) { %>
+                <!-- Single Slide -->
+                <div class="single-welcome-slide bg-img bg-overlay"
+                    style="background-image: url(<%= homePageInfo.images[i] %>); height: 100vh;">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <!-- Welcome Text -->
+                            <div class="col-12 col-lg-8 col-xl-6">
+                                <div class="welcome-text">
+                                    <h2 data-animation="bounceInDown" data-delay="900ms">
+                                        <%= homePageInfo.homePageTitle %>
+                                    </h2>
+                                    <p data-animation="bounceInDown" data-delay="500ms">
+                                        <%= homePageInfo.homePageDescription %>
+                                    </p>
+                                    <div class="hero-btn-group" data-animation="bounceInDown" data-delay="100ms">
+                                        <a href="#" class="btn alime-btn mb-3 mb-sm-0 mr-4">Get a Quote</a>
+                                        <a class="hero-mail-contact"
+                                            href="mailto:hello.alime@gmail.com">hello.alime@gmail.com</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <% } %>
+
+
         </div>
+    </section>
+    <!-- Welcome Area End -->
 
-        <!-- Header Area Start -->
-        <header class="header-area">
-            <!-- Main Header Start -->
-            <div class="main-header-area">
-                <div class="classy-nav-container breakpoint-off">
-                    <div class="container">
-                        <!-- Classy Menu -->
-                        <nav
-                            class="classy-navbar justify-content-between"
-                            id="alimeNav"
-                        >
-                            <!-- Logo -->
-                            <a class="nav-brand" href="/"
-                                ><img
-                                    src="./img/logo/logo4.png"
-                                    alt=""
-                                    style="width: 200px"
-                            /></a>
+    <div style="width: 100%; padding: 50px 10px; text-align: center">
+        <h1 style="font-family: 'Times New Roman', Times, serif">
+            Our Recent Work
+        </h1>
+    </div>
 
-                            <!-- Navbar Toggler -->
-                            <div class="classy-navbar-toggler">
-                                <span class="navbarToggler"
-                                    ><span></span><span></span><span></span
-                                ></span>
-                            </div>
-
-                            <!-- Menu -->
-                            <div class="classy-menu">
-                                <!-- Menu Close Button -->
-                                <div class="classycloseIcon">
-                                    <div class="cross-wrap">
-                                        <span class="top"></span
-                                        ><span class="bottom"></span>
-                                    </div>
-                                </div>
-                                <!-- Nav Start -->
-                                <div class="classynav">
-                                    <ul id="nav">
-                                        <li class="active">
-                                            <a href="/">Home</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="/about">About</a>
-                                        </li>
-                                        <!-- <!-- <li>
-                                            <a href="/our-crew">Our Crew</a>
-                                        </li> -->
-                                        <li>
-                                            <a href="/gallery">Gallery</a>
-                                        </li>
-                                        <li><a href="/cinema">Films</a></li>
-                                        <li><a href="/faq">FAQ</a></li>
-                                        <li>
-                                            <a href="/contact">Contact</a>
-                                        </li>
-                                    </ul>
-
-                                    <!-- Search Icon -->
-                                    <!-- <!-- <div
-                                        class="search-icon"
-                                        data-toggle="modal"
-                                        data-target="#searchModal"
-                                    >
-                                        <i class="ti-search"></i>
-                                    </div> -->
-                                </div>
-                                <!-- Nav End -->
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Header Area End -->
-
-        <!-- Welcome Area Start -->
-        <section class="welcome-area">
-            <div style="width: 100%">
-                <img src="./img/bg-img/home-banner.gif" />
-            </div>
-        </section>
-        <!-- Welcome Area End -->
-
-        <!-- Introduction Start -->
-        <div style="width: 100%">
-            <img src="./img/bg-img/home-quote.jpeg" />
-        </div>
-
-        <div style="width: 100%; padding: 50px 10px; text-align: center">
-            <h1 style="font-family: 'Times New Roman', Times, serif">
-                Our Recent Work
-            </h1>
-        </div>
-
-        <!-- Recent Images section begin -->
-        <div class="container-fluid">
-            <div class="row alime-portfolio">
-                <% for(img of recentImages) { %>
+    <!-- Recent Images section begin -->
+    <div class="container-fluid">
+        <div class="row alime-portfolio">
+            <% for(img of recentImages) { %>
                 <!-- Single Gallery Item -->
-                <div
-                    class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp"
-                    data-wow-delay="100ms"
-                >
+                <div class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp"
+                    data-wow-delay="100ms">
                     <div class="single-portfolio-content">
-                        <img
-                            src="<%= img.url %>"
-                            alt=""
-                            style="
+                        <img src="<%= img.url %>" alt="" style="
                                 height: 200px;
                                 overflow-y: hidden;
                                 object-fit: cover;
                                 border-radius: 10px;
-                            "
-                        />
+                            " />
                         <div class="hover-content">
                             <a href="<%= img.url %>" class="portfolio-img">+</a>
                         </div>
                     </div>
                 </div>
                 <% } %>
-            </div>
         </div>
-        <!-- Recent Images section end -->
+    </div>
+    <!-- Recent Images section end -->
 
-        <!-- Recent Videos section begin -->
-        <div class="container-fluid" style="padding: 30px">
-            <div class="owl-carousel" id="recentVideos">
-                <% for(vid of recentVideos) { %>
+    <!-- Recent Videos section begin -->
+    <div class="container-fluid" style="padding: 30px">
+        <div class="owl-carousel" id="recentVideos">
+            <% for(vid of recentVideos) { %>
                 <div class="card mx-1">
-                    <div
-                        class="about-video-area wow fadeInUp"
-                        data-wow-delay="100ms"
-                    >
-                        <img
-                            src="<%= vid.thumbnailUrl  %>"
-                            style="overflow-y: hidden; object-fit: cover"
-                        />
+                    <div class="about-video-area wow fadeInUp" data-wow-delay="100ms">
+                        <img src="<%= vid.thumbnailUrl  %>" style="overflow-y: hidden; object-fit: cover" />
                         <div class="video-icon">
-                            <a href="<%= vid.url  %>" class="video-play-btn"
-                                ><i class="arrow_triangle-right"></i
-                            ></a>
+                            <a href="<%= vid.url  %>" class="video-play-btn"><i class="arrow_triangle-right"></i></a>
                         </div>
                     </div>
-                    <div
-                        class="card-body text-overflow-1"
-                        style="max-height: 58px"
-                    >
-                        <p class="card-text"><%= vid.description %></p>
+                    <div class="card-body text-overflow-1" style="max-height: 58px">
+                        <p class="card-text">
+                            <%= vid.description %>
+                        </p>
                     </div>
                 </div>
                 <% } %>
-            </div>
         </div>
-        <!-- Recent Videos section end -->
+    </div>
+    <!-- Recent Videos section end -->
 
-        <!-- Our services Us Area Start -->
-        <section
-            class="why-choose-us-area bg-gray section-padding-80-0 clearfix mt-30"
-        >
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div
-                            class="section-heading text-center wow fadeInUp"
-                            data-wow-delay="100ms"
-                        >
-                            <h2 style="font-family: 'Rajdhani', sans-serif">
-                                What we do?
-                            </h2>
-                        </div>
+    <!-- Our services Us Area Start -->
+    <section class="why-choose-us-area bg-gray section-padding-80-0 clearfix mt-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                        <h2 style="font-family: 'Rajdhani', sans-serif">
+                            What we do?
+                        </h2>
                     </div>
                 </div>
+            </div>
 
-                <div class="row mb-30">
+            <div class="row mb-30">
+                <% for(service of services) { %>
                     <!-- Single Why Choose Area -->
                     <div class="col-md-6 col-lg-4">
-                        <div
-                            class="why-choose-us-content text-center mb-80 wow fadeInUp"
-                            data-wow-delay="100ms"
-                        >
+                        <div class="why-choose-us-content text-center mb-80 wow fadeInUp" data-wow-delay="100ms">
                             <div class="chosse-us-icon">
-                                <i class="fa fa-camera" aria-hidden="true"></i>
+                                <img src="<%= service.url %>" class="rounded-circle" style="width: 76px;height: 76px;">
                             </div>
-                            <h4>Wedding & Pre-Wedding Photoshoot</h4>
+                            <h4>
+                                <%= service.title %>
+                            </h4>
                             <p>
-                                We do photography and cinematography for both
-                                pre-wedding and wedding.
+                                <%= service.description %>
                             </p>
+                            <br />
+                            <h3><span class="badge badge-pill badge-primary">
+                                    <%= service.quotePrice %>
+                                </span></h3>
                         </div>
                     </div>
+                    <% } %>
+            </div>
 
-                    <!-- Single Why Choose Area -->
-                    <div class="col-md-6 col-lg-4">
-                        <div
-                            class="why-choose-us-content text-center mb-80 wow fadeInUp"
-                            data-wow-delay="300ms"
-                        >
-                            <div class="chosse-us-icon">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="32"
-                                    height="32"
-                                    fill="currentColor"
-                                    class="bi bi-person-bounding-box"
-                                    viewBox="0 0 16 16"
-                                >
-                                    <path
-                                        d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"
-                                    />
-                                    <path
-                                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
-                                    />
-                                </svg>
-                            </div>
-                            <h4>Celebrity or Model Photoshoot</h4>
-                            <p>
-                                We've done Photoshoot for many Celebrities and
-                                models. Visit our gallery for more.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Single Why Choose Area -->
-                    <div class="col-md-6 col-lg-4">
-                        <div
-                            class="why-choose-us-content text-center mb-80 wow fadeInUp"
-                            data-wow-delay="500ms"
-                        >
-                            <div class="chosse-us-icon">
-                                <i class="fa fa-film" aria-hidden="true"></i>
-                            </div>
-                            <h4>Cinematography</h4>
-                            <p>
-                                We do photoshoot and cinematography for all type
-                                of events. For example - birth day, party,
-                                wedding etc or any other one day events.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Us -->
-                <div style="text-align: center; padding-bottom: 30px">
-                    <a href="/contact">
-                        <h2
-                            style="
+            <!-- Contact Us -->
+            <div style="text-align: center; padding-bottom: 30px">
+                <a href="/contact">
+                    <h2 style="
                                 font-family: 'Rajdhani', sans-serif;
                                 color: #fc6060;
-                            "
-                        >
-                            Contact Us
-                        </h2>
-                    </a>
-                    <h4>+91 9002516322</h4>
-                </div>
+                            ">
+                        Contact Us
+                    </h2>
+                </a>
+                <h4>+91 9002516322</h4>
             </div>
-        </section>
-        <!-- Our services us Area End -->
+        </div>
+    </section>
+    <!-- Our services us Area End -->
 
-        <!-- Footer Area Start -->
-        <footer class="footer-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div
-                            class="footer-content d-flex align-items-center justify-content-between"
-                        >
-                            <!-- Copywrite Text -->
-                            <div class="copywrite-text">
-                                <p>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;
-                                    <script>
-                                        document.write(
-                                            new Date().getFullYear()
-                                        );
-                                    </script>
-                                    All rights reserved | by ZeedStudio | This
-                                    template is made with
-                                    <i
-                                        class="fa fa-heart-o"
-                                        aria-hidden="true"
-                                    ></i>
-                                    by
-                                    <a
-                                        href="https://colorlib.com"
-                                        target="_blank"
-                                        >Colorlib</a
-                                    >
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                </p>
-                            </div>
-                            <!-- Footer Logo -->
-                            <div class="footer-logo">
-                                <a href="#"
-                                    ><img
-                                        src="./img/logo/logo2.png"
-                                        style="width: 150px"
-                                        alt=""
-                                /></a>
-                            </div>
-                            <!-- Social Info -->
-                            <div class="social-info">
-                                <a
-                                    target="_blank"
-                                    href="https://www.facebook.com/people/Zeed-studio/100075977942375/"
-                                    ><i
-                                        class="ti-facebook"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a href="#"
-                                    ><i
-                                        class="ti-twitter-alt"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a
-                                    href="https://www.instagram.com/zeedstudio__official/"
-                                    target="_blank"
-                                    ><i
-                                        class="ti-instagram"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                            </div>
+    <!-- Footer Area Start -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-content d-flex align-items-center justify-content-between">
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>
+                                    document.write(
+                                        new Date().getFullYear()
+                                    );
+                                </script>
+                                All rights reserved | by ZeedStudio | This
+                                template is made with
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                by
+                                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <!-- Footer Logo -->
+                        <div class="footer-logo">
+                            <a href="#"><img src="./img/logo/logo2.png" style="width: 150px" alt="" /></a>
+                        </div>
+                        <!-- Social Info -->
+                        <div class="social-info">
+                            <a target="_blank" href="https://www.facebook.com/people/Zeed-studio/100075977942375/"><i
+                                    class="ti-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="ti-twitter-alt" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/zeedstudio__official/" target="_blank"><i
+                                    class="ti-instagram" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- Footer Area End -->
+        </div>
+    </footer>
+    <!-- Footer Area End -->
 
-        <!-- **** All JS Files ***** -->
-        <!-- jQuery 2.2.4 -->
-        <script src="js/jquery.min.js" type="text/javascript"></script>
-        <!-- Popper -->
-        <script src="js/popper.min.js" type="text/javascript"></script>
-        <!-- Bootstrap -->
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- All Plugins -->
-        <script src="js/alime.bundle.js" type="text/javascript"></script>
-        <!-- Active -->
-        <script
-            src="js/default-assets/active.js"
-            type="text/javascript"
-        ></script>
+    <!-- **** All JS Files ***** -->
+    <%- include('./partials/scripts'); %>
         <script>
             $("#recentVideos").owlCarousel({
                 items: parseInt("<%= recentVideos.length %>"),
@@ -447,5 +259,6 @@
                 },
             });
         </script>
-    </body>
+</body>
+
 </html>

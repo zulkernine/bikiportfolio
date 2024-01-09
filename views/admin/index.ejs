@@ -5,6 +5,16 @@
     <head>
         <%- include('../partials/head'); %>
             <title>Admin Portal</title>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+                integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+                crossorigin="anonymous" />
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+                integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+                crossorigin="anonymous"></script>
     </head>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -20,9 +30,15 @@
                     <a href="#upload_img-video" class="nav-item nav-link">Upload Image/Video</a>
                     <a href="#all_images" class="nav-item nav-link">All Images</a>
                     <a href="#all_videos" class="nav-item nav-link">All Videos</a>
-                    <a href="#about_images" class="nav-item nav-link">About</a>
+                    <a href="#home_page" class="nav-item nav-link">Home Page</a>
+                    <a href="#service_quotes" class="nav-item nav-link">Services</a>
+                    <a href="#about_us" class="nav-item nav-link">About Us</a>
+                    <a href="#team_members" class="nav-item nav-link">Team Members</a>
+                    <a href="#contact_details" class="nav-item nav-link">Contacts</a>
+                    <a href="#client_queries" class="nav-item nav-link">Client Queries</a>
                 </div>
                 <div class="navbar-nav ms-auto">
+                    <h4><span class="badge badge-primary mx-3">@<%= teamInfo.accountId %> </span></h4>
                     <form method="post" action="/logout">
                         <button type="submit" class="btn btn-danger btn-sm">
                             Logout
@@ -114,7 +130,7 @@
                             <div class="mb-3">
                                 <label for="videoDescription" class="form-label">Video URL(Youtube)</label>
                                 <input type="url" class="form-control" id="videoDescription" name="url"
-                                    placeholder="https://you.tube/dsalf340dsjaassa9d0" />
+                                    placeholder="https://www.youtube.com/watch?v=TKLamhyJ6bE" />
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Description</label>
@@ -299,24 +315,36 @@
             </table>
         </section>
 
-        <section id="about_images" style="padding-top: 75px;" >
-            <h1>About section images</h1>
+        <section id="home_page" style="padding-top: 75px;">
+            <h1>Home Page</h1>
             <div class="card mb-10">
-                <h2 class="card-header" >
+                <h2 class="card-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <h4>Upload About images</h4>
+                        <h4>Home Page Info</h4>
                     </button>
                 </h2>
-                <div class="card-body" >
-                    <div >
-                        <form class="row" action="/admin/about" method="post" enctype="multipart/form-data"
+                <div class="card-body">
+                    <div>
+                        <form class="row" action="/admin/home" method="post" enctype="multipart/form-data"
                             id="uploadImagesForm">
                             <div class="mb-3 col-auto">
+                                <label for="formFileMultiple" class="form-label">Banner Images</label>
                                 <input class="form-control" type="file" id="formFileMultiple" multiple name="images"
                                     accept="image/*" />
                             </div>
-                            
+                            <div class="mb-3">
+                                <label for="videoDescription" class="form-label">Title</label>
+                                <input type="TEXT" class="form-control" required id="videoDescription" name="title"
+                                    placeholder="Hello, I am Alime" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required
+                                    name="description"> I photograph very instinctively. I see how it is taken like that. I do not follow certain styles, philosophies or teachers.
+                                    </textarea>
+                            </div>
+
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-outline-primary">
                                     Submit
@@ -326,33 +354,90 @@
                     </div>
                 </div>
             </div>
-            <!-- Show Uploaded images -->
+        </section>
+
+        <section id="service_quotes" style="padding-top: 75px;">
+            <h1>Service Quotes</h1>
+            <div class="card mb-10">
+                <h2 class="card-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h4>Describe services</h4>
+                    </button>
+                </h2>
+                <div class="card-body">
+                    <div>
+                        <form class="row" action="/admin/quotes" method="post" enctype="multipart/form-data"
+                            id="uploadImagesForm">
+                            <div class="mb-3 col-auto">
+                                <label for="formFileMultiple" class="form-label">Banner Images</label>
+                                <input class="form-control" type="file" id="formFileMultiple" name="images"
+                                    accept="image/*" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="videoDescription" class="form-label">Title</label>
+                                <input type="text" class="form-control" required id="videoDescription" name="title"
+                                    placeholder="Wedding & Pre-Wedding Photoshoot" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required
+                                    name="description"> We do photography and cinematography for both pre-wedding and wedding.
+                                    </textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="quotePrice" class="form-label">Price</label>
+                                <input type="text" class="form-control" required id="quotePrice" name="quotePrice"
+                                    placeholder="₹25,000/Day" />
+                            </div>
+
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Show Services -->
             <table class="table align-middle mb-4 bg-white">
                 <thead class="bg-light">
                     <tr>
-                        <th>Preview</th>
-                        <th>Upload Time</th>
+                        <th>Icon</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Price Quote</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% for(var img of aboutImages) { %>
+                    <% for(var service of services) { %>
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="<%= img.url %>" style="width: 200px; height: 100px" />
+                                    <img src="<%= service.url %>" style="width: 200px; height: 100px" />
                                 </div>
                             </td>
                             <td>
                                 <p class="fw-normal mb-1">
-                                    <%= new Date(img.uploadedAt*1000).toLocaleString() %>
+                                    <%= service.title %>
                                 </p>
                             </td>
-                            
                             <td>
-                                
+                                <p class="fw-normal mb-1">
+                                    <%= service.description %>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">
+                                    <%= service.quotePrice %>
+                                </p>
+                            </td>
+
+                            <td>
                                 <button type="button" class="btn btn-outline-danger btn-sm"
-                                    onclick="deleteAboutImage( '<%= img.id %>' )">
+                                    onclick="deleteService( '<%= service.id %>' )">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-trash" viewBox="0 0 16 16">
                                         <path
@@ -367,7 +452,277 @@
                 </tbody>
             </table>
         </section>
-<!-- f4b793ff-ed95-426a-95d2-af2c448da52b2.jpg , a3d4506f-55af-471b-a105-0ef679d83e853.jpg-->
+
+        <section id="about_us" style="padding-top: 75px;">
+            <div class="card mb-10">
+                <h2 class="card-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h4>About Us Info</h4>
+                    </button>
+                </h2>
+                <div class="card-body">
+                    <div>
+                        <form class="row" action="/admin/about" method="post" enctype="multipart/form-data"
+                            id="uploadImagesForm">
+                            <div class="mb-3 col-auto">
+                                <label for="aboutbanner" class="form-label required">Banner Images</label>
+                                <input class="form-control" type="file" id="aboutbanner" name="bannerImage"
+                                    accept="image/*" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="videoDescription" class="form-label">Short Introduction Video
+                                    URL(Youtube)</label>
+                                <input type="url" class="form-control" id="videoDescription" name="introVideoUrl"
+                                    placeholder="https://www.youtube.com/watch?v=TKLamhyJ6bE" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="aboutUsTitleID" class="form-label required">About Us Title</label>
+                                <input type="TEXT" class="form-control" required id="aboutUsTitleID" name="aboutUsTitle"
+                                    placeholder="We Live For Passion" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="aboutUsDescriptionId" class="form-label required">About Us
+                                    Description</label>
+                                <textarea class="form-control" id="aboutUsDescriptionId" rows="3" required
+                                    name="aboutUsDescription"> Welcome to our photography haven! We are passionate storytellers capturing life's fleeting moments through the lens. With an unwavering dedication to artistry and creativity, we freeze time, immortalizing emotions, landscapes, and candid expressions. Our journey in photography is a fusion of technical expertise, artistic vision, and an unyielding love for
+                                    the craft. From breathtaking landscapes to intimate portraits, we strive to encapsulate the beauty and essence of every
+                                    subject. Join us as we embark on a visual odyssey, celebrating the extraordinary in the ordinary through our lens.
+                                                </textarea>
+                            </div>
+
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team_members" style="padding-top: 75px;">
+            <h1>Team Members</h1>
+            <div class="card mb-10">
+                <h2 class="card-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h4>Member Description</h4>
+                    </button>
+                </h2>
+                <div class="card-body">
+                    <div>
+                        <form class="row" action="/admin/members" method="post" enctype="multipart/form-data"
+                            id="uploadImagesForm">
+                            <div class="mb-3 col-auto">
+                                <label for="formFileMultiple" class="form-label">Profile picture</label>
+                                <input class="form-control" type="file" id="formFileMultiple" name="images"
+                                    accept="image/*" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="memberName" class="form-label">Name</label>
+                                <input type="text" class="form-control" required id="memberName" name="name"
+                                    placeholder="Write your name" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="memberRole" class="form-label">Role</label>
+                                <input type="text" class="form-control" required id="memberRole" name="role"
+                                    placeholder="Photographer / Photo editor" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="facebookProfileId" class="form-label">Facebook profile</label>
+                                <input type="url" class="form-control" required id="facebookProfileId"
+                                    name="facebookProfile" placeholder="https://facebook.com/username" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="instagramProfileId" class="form-label">Instagram Profile</label>
+                                <input type="url" class="form-control" required id="instagramProfileId"
+                                    name="instagramProfile" placeholder="https://instagram.com/username" />
+                            </div>
+
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Show Services -->
+            <table class="table align-middle mb-4 bg-white">
+                <thead class="bg-light">
+                    <tr>
+                        <th>Icon</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Profiles</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var member of members) { %>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="<%= member.profilePicture %>" style="width: 200px;" class="rounded" />
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">
+                                    <%= member.name %>
+                                </p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">
+                                    <%= member.role %>
+                                </p>
+                            </td>
+                            <td>
+                                <div class="member-social-info">
+                                    <% if(member.facebookProfile) { %>
+                                        <a href="<%= member.facebookProfile %>"><i class="ti-facebook"></i></a>
+                                        <% } %>
+                                            <% if(member.instagramProfile) { %>
+                                                <a href="<%= member.instagramProfile %>"><i
+                                                        class="ti-instagram"></i></a>
+                                                <% } %>
+                                </div>
+                            </td>
+
+                            <td>
+                                <button type="button" class="btn btn-outline-danger btn-sm"
+                                    onclick="deleteMember( '<%= member.serialNo %>' )">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                        <path fill-rule="evenodd"
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contact_details" style="padding-top: 75px;">
+            <h1>Contact Info</h1>
+            <div class="card mb-10">
+                <h2 class="card-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h4>Update Contact</h4>
+                    </button>
+                </h2>
+                <div class="card-body">
+                    <div>
+                        <form class="row" action="/admin/contact" method="post" enctype="multipart/form-data"
+                            id="uploadImagesForm">
+
+                            <div class="mb-3">
+                                <label for="contactName" class="form-label">Name</label>
+                                <input type="text" class="form-control" required id="contactName" name="name"
+                                    value="<%= contactDetails.name %>" placeholder="Name of the contact person" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" required id="contactEmail" name="email"
+                                    value="<%= contactDetails.email %>" placeholder="me@example.com" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactNumberId" class="form-label">Name</label>
+                                <input type="text" class="form-control" required id="contactNumberId"
+                                    name="contactNumber" placeholder="+91 9999999999"
+                                    value="<%= contactDetails.contactNumber %>" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactaddressid" class="form-label">Address</label>
+                                <input type="text" class="form-control" required id="contactaddressid" name="address"
+                                    value="<%= contactDetails.address %>" placeholder="Full address" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="locationUrlId" class="form-label">Location URL</label>
+                                <input type="url" class="form-control" required id="locationUrlId" name="locationUrl"
+                                    value="<%= contactDetails.locationUrl %>" placeholder="Full address" />
+                            </div>
+
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-outline-primary">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="client_queries" style="padding-top: 75px;">
+            <div class="card card-body">
+                <h2>Client Queries</h2>
+                <table class="table align-middle mb-4 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var query of queries) { %>
+                            <tr>
+                                <td>
+                                    <p class="fw-normal mb-1">
+                                        <%= query.uploadedAt %>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-1">
+                                        <%= query.name %>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-1">
+                                        <%= query.email %>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-1">
+                                        <%= query.phone %>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-1">
+                                        <%= query.message %>
+                                    </p>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger btn-sm"
+                                        onclick="deleteQuery( '<%= query.id %>' )">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <div style="height: 100px;"></div>
+
     </div>
     <script>
         function deleteImage(id) {
@@ -507,6 +862,63 @@
 
             cancelEditVideo(id);
         }
+
+        function deleteService(id) {
+            console.log(id);
+            $.ajax({
+                type: "delete",
+                url: "/admin/quotes",
+                data: JSON.stringify({ id }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Can't delete, try again");
+                    console.log(errorThrown);
+                },
+            });
+        }
+
+        function deleteMember(id) {
+            console.log(id);
+            $.ajax({
+                type: "delete",
+                url: "/admin/members",
+                data: JSON.stringify({ id }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Can't delete, try again");
+                    console.log(errorThrown);
+                },
+            });
+        }
+
+        function deleteQuery(id) {
+            console.log(id);
+            $.ajax({
+                type: "delete",
+                url: "/admin/query",
+                data: JSON.stringify({ id }),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Can't delete, try again");
+                    console.log(errorThrown);
+                },
+            });
+        }
+
+
+
     </script>
 </body>
 

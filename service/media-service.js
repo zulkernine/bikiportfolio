@@ -38,11 +38,15 @@ class MediaService {
         return allImages;
     }
 
-    static async getAlboutImages() {
+    static async getAlboutInfo(accountId) {
         const params = {
             TableName: config.aboutTable,
+            Key: {
+                accountId,
+            },
         };
-        return await scanDynamoTable(params, []);
+        const infos = await scanDynamoTable(params, []);
+        return infos.length ? infos[0] : null;
     }
 
     static async getRecentImages() {
@@ -73,7 +77,7 @@ class MediaService {
         return members;
     }
 
-    static async findById(table,id){
+    static async findById(table, id) {
         const params = {
             TableName: table,
             Key: {
@@ -84,15 +88,117 @@ class MediaService {
         return infos.length ? infos[0] : null;
     }
 
-    static async getTeamInfo() {
+    static async getTeamInfo(accountId) {
+        console.log("accountId: " + accountId);
         const params = {
             TableName: config.adminUserTable,
             Key: {
-                id: "zeedTeamInfo",
+                accountId,
             },
         };
         const infos = await scanDynamoTable(params, []);
-        return infos.find((v, i) => v.id == "zeedTeamInfo");
+        return infos.find((v, i) => v.accountId == accountId);
+    }
+
+    static async getTeamInfoByUsername(username) {
+        console.log("username: " + username);
+        const params = {
+            TableName: config.adminUserTable,
+            Key: {
+                id: username,
+            },
+        };
+        const infos = await scanDynamoTable(params, []);
+        console.log(infos);
+        return infos.find((v, i) => v.email == username);
+    }
+
+    static async getHomePageInfo(accountId) {
+        const params = {
+            TableName: config.homeTable,
+            Key: {
+                accountId,
+            },
+        };
+        const infos = await scanDynamoTable(params, []);
+        return infos.find((v, i) => v.accountId == accountId);
+    }
+
+    static async getServices(accountId) {
+        const params = {
+            TableName: config.serviceQuotes,
+            FilterExpression: "accountId = :val",
+            ExpressionAttributeValues: {
+                ":val": accountId,
+            },
+        };
+        return (await scanDynamoTable(params, [])).map((e) => {
+            return {
+                url: e.iconUrl,
+                id: e.id,
+                ...JSON.parse(e.detailsJson),
+            };
+        });
+    }
+
+    static async getTeamMembers(accountId) {
+        const params = {
+            TableName: config.teamTable,
+            FilterExpression: "accountId = :val",
+            ExpressionAttributeValues: {
+                ":val": accountId,
+            },
+        };
+        return await scanDynamoTable(params, []);
+    }
+
+    static async getContactDetails(accountId) {
+        console.log("accountId: " + accountId);
+        const params = {
+            TableName: config.contactDetails,
+            Key: {
+                accountId,
+            },
+        };
+        const infos = await scanDynamoTable(params, []);
+        return infos.find((v, i) => v.accountId == accountId);
+    }
+
+    static async addClientQuery(accountId, data) {
+        const options = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+        };
+
+        const params = {
+            TableName: config.clientQuery,
+            Item: {
+                id: uuidv4(),
+                accountId: accountId,
+                name: data.txtName,
+                email: data.txtEmail,
+                phone: data.txtPhone,
+                message: data.txtMsg,
+                uploadedAt: new Date().toLocaleDateString("en-US", options),
+            },
+        };
+
+        await dynamodb.put(params).promise();
+    }
+
+    static async getClientQueries(accountId) {
+        const params = {
+            TableName: config.clientQuery,
+            FilterExpression: "accountId = :val",
+            ExpressionAttributeValues: {
+                ":val": accountId,
+            },
+        };
+        return await scanDynamoTable(params, []);
     }
 }
 

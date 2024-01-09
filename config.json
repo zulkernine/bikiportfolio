@@ -1,9 +1,13 @@
 {
     "imageTable": "pictures",
     "videoTable": "videos",
-    "aboutTable": "aboutImages",
+    "aboutTable": "aboutUsInfo",
+    "homeTable": "homePageInfo",
     "adminUserTable": "users",
-    "cloudfrontDomain": "https://dhtb3ua8nw2du.cloudfront.net",
-    "bucketName": "portfolio-clicks",
-    "teamTable": "teamMembers"
+    "serviceQuotes": "servicesQuotes",
+    "cloudfrontDomain": "https://portfolio-images-prod.s3.ap-south-1.amazonaws.com",
+    "bucketName": "portfolio-images-prod",
+    "teamTable": "teamMembers",
+    "contactDetails": "contactDetails",
+    "clientQuery": "clientQuery"
 }

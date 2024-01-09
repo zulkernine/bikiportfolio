@@ -50,15 +50,25 @@
 
                                 <div class="form-outline mb-4">
                                     <input
+                                        id="username"
+                                        type="email"
+                                        name="username"
+                                        required
+                                        class="form-control form-control-lg"
+                                    />
+                                    <label class="form-label" for="username"
+                                        >Email</label
+                                    >
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input
                                         id="password"
                                         type="password"
                                         name="password"
                                         required
                                         class="form-control form-control-lg"
                                     />
-                                    <label
-                                        class="form-label"
-                                        for="password"
+                                    <label class="form-label" for="password"
                                         >Access Key</label
                                     >
                                 </div>
@@ -70,6 +80,14 @@
                                     >
                                         Login
                                     </button>
+                                </div>
+
+                                <div class="pt-1 mb-4">
+                                    <% if (typeof error != "undefined") { %>
+                                    <p class="alert alert-danger">
+                                        <%= error %>
+                                    </p>
+                                    <% } %>
                                 </div>
                             </form>
                         </div>

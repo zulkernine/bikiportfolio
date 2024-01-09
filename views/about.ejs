@@ -1,256 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
 
+<head>
+    <%- include('./partials/head'); %>
         <!-- Title -->
         <title>About Us | ZeedStudio</title>
-        <meta
-            name="description"
-            content="Best Photoshoot and Cinematography or Videography for Birthday,Wedding,Pre-Wedding,Celebrities or any other events | ZeedStudio"
-        />
-        <meta name="author" content="Sarfaraj" />
-        <meta
-            name="keywords"
-            content="Photoshoot, Cinematography, Videography, Birthday Photoshoot, Wedding Photoshoot, Pre-wedding Photoshoot, Celebrity Photoshoot"
-        />
+</head>
 
-        <!-- Favicon -->
-        <link rel="icon" href="./img/logo/favicon.ico" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Rajdhani"
-        />
-        <!-- Stylesheet -->
-        <link rel="stylesheet" href="style.css" />
-    </head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
 
-    <body>
-        <!-- Preloader -->
-        <div id="preloader">
-            <div class="loader"></div>
-        </div>
-        <!-- /Preloader -->
-
-        <!-- Top Search Form Area -->
-        <div class="top-search-area">
-            <div
-                class="modal fade"
-                id="searchModal"
-                tabindex="-1"
-                role="dialog"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <!-- Close -->
-                            <button
-                                type="button"
-                                class="btn close-btn"
-                                data-dismiss="modal"
-                            >
-                                <i class="ti-close"></i>
-                            </button>
-                            <!-- Form -->
-                            <form action="index.html" method="post">
-                                <input
-                                    type="search"
-                                    name="top-search-bar"
-                                    class="form-control"
-                                    placeholder="Search and hit enter..."
-                                />
-                                <button type="submit">Search</button>
-                            </form>
-                        </div>
+    <!-- Top Search Form Area -->
+    <div class="top-search-area">
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- Close -->
+                        <button type="button" class="btn close-btn" data-dismiss="modal">
+                            <i class="ti-close"></i>
+                        </button>
+                        <!-- Form -->
+                        <form action="index.html" method="post">
+                            <input type="search" name="top-search-bar" class="form-control"
+                                placeholder="Search and hit enter..." />
+                            <button type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Header Area Start -->
-        <header class="header-area">
-            <!-- Main Header Start -->
-            <div class="main-header-area">
-                <div class="classy-nav-container breakpoint-off">
-                    <div class="container">
-                        <!-- Classy Menu -->
-                        <nav
-                            class="classy-navbar justify-content-between"
-                            id="alimeNav"
-                        >
-                            <!-- Logo -->
-                            <a class="nav-brand" href="/"
-                                ><img
-                                    src="./img/logo/logo4.png"
-                                    style="width: 200px"
-                                    alt=""
-                            /></a>
+    <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <%- include('./partials/navbar',{currentTab: 'About' }); %>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
 
-                            <!-- Navbar Toggler -->
-                            <div class="classy-navbar-toggler">
-                                <span class="navbarToggler"
-                                    ><span></span><span></span><span></span
-                                ></span>
-                            </div>
-
-                            <!-- Menu -->
-                            <div class="classy-menu">
-                                <!-- Menu Close Button -->
-                                <div class="classycloseIcon">
-                                    <div class="cross-wrap">
-                                        <span class="top"></span
-                                        ><span class="bottom"></span>
-                                    </div>
-                                </div>
-                                <!-- Nav Start -->
-                                <div class="classynav">
-                                    <ul id="nav">
-                                        <li>
-                                            <a href="/">Home</a>
-                                        </li>
-
-                                        <li class="active">
-                                            <a href="/about">About</a>
-                                        </li>
-                                        <!-- <li>
-                                            <a href="/our-crew">Our Crew</a>
-                                        </li> -->
-                                        <li>
-                                            <a href="/gallery">Gallery</a>
-                                        </li>
-                                        <li><a href="/cinema">Films</a></li>
-                                        <li><a href="/faq">FAQ</a></li>
-                                        <li>
-                                            <a href="/contact">Contact</a>
-                                        </li>
-                                    </ul>
-
-                                    <!-- Search Icon -->
-                                    <!-- <div
-                                        class="search-icon"
-                                        data-toggle="modal"
-                                        data-target="#searchModal"
-                                    >
-                                        <i class="ti-search"></i>
-                                    </div> -->
-                                </div>
-                                <!-- Nav End -->
-                            </div>
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area bg-img bg-overlay jarallax"
+        style="background-image: url(<%= aboutUs.bannerUrl ? aboutUs.bannerUrl : 'https://picsum.photos/1001' %>)">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="page-title">About Us</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item">
+                                    <a href="/<%= accountId %>"><i class="icon_house_alt"></i>
+                                        Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    About
+                                </li>
+                            </ol>
                         </nav>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- Header Area End -->
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
 
-        <!-- start: About us banners -->
-        <section>
-            <div class="welcome-slides owl-carousel h-100">
-                <% for(let img of aboutImages) { %>
-                <!-- Single Slide -->
-                <div
-                    id="<%= img.id %>"
-                    class="bg-img bg-overlay d-flex min-vh-100"
-                >
-                    <div class="my-auto w-100">
-                        <img src="<%= img.url %>" />
+    <!-- About Us Area Start -->
+    <div class="about-us-area section-padding-80-0 clearfix">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-6">
+                    <div class="about-us-content mb-80">
+                        <h3 class="wow fadeInUp" data-wow-delay="100ms">
+                            <%= aboutUs.aboutUsTitle %>
+                        </h3>
+                        <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
+                        <p class="wow fadeInUp" data-wow-delay="300ms">
+                            <%= aboutUs.aboutUsDescription %>
+                        </p>
+                        <a class="btn alime-btn btn-2 mt-30 wow fadeInUp" data-wow-delay="500ms" href="#">Contact Us</a>
                     </div>
                 </div>
-                <% } %>
-            </div>
-        </section>
-        <!-- end: About us banners -->
-
-        <!-- Footer Area Start -->
-        <footer class="footer-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div
-                            class="footer-content d-flex align-items-center justify-content-between"
-                        >
-                            <!-- Copywrite Text -->
-                            <div class="copywrite-text">
-                                <p>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;
-                                    <script>
-                                        document.write(
-                                            new Date().getFullYear()
-                                        );
-                                    </script>
-                                    All rights reserved | by ZeedStudio | This
-                                    template is made with
-                                    <i
-                                        class="fa fa-heart-o"
-                                        aria-hidden="true"
-                                    ></i>
-                                    by
-                                    <a
-                                        href="https://colorlib.com"
-                                        target="_blank"
-                                        >Colorlib</a
-                                    >
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                </p>
-                            </div>
-                            <!-- Footer Logo -->
-                            <div class="footer-logo">
-                                <a href="#"
-                                    ><img
-                                        src="./img/logo/logo2.png"
-                                        style="width: 150px"
-                                        alt=""
-                                /></a>
-                            </div>
-                            <!-- Social Info -->
-                            <div class="social-info">
-                                <a
-                                    target="_blank"
-                                    href="https://www.facebook.com/people/Zeed-studio/100075977942375/"
-                                    ><i
-                                        class="ti-facebook"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a href="#"
-                                    ><i
-                                        class="ti-twitter-alt"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a
-                                    href="https://www.instagram.com/zeedstudio__official/"
-                                    target="_blank"
-                                    ><i
-                                        class="ti-instagram"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                            </div>
+                <div class="col-12 col-lg-6">
+                    <div class="about-video-area mb-80 wow fadeInUp" data-wow-delay="100ms">
+                        <img src="https://picsum.photos/800/400" alt="" />
+                        <div class="video-icon">
+                            <a href="<%= aboutUs.introVideoUrl %>" class="video-play-btn"><i
+                                    class="arrow_triangle-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- Footer Area End -->
+        </div>
+    </div>
+    <!-- About Us Area End -->
 
-        <!-- **** All JS Files ***** -->
-        <!-- jQuery 2.2.4 -->
-        <script src="js/jquery.min.js"></script>
-        <!-- Popper -->
-        <script src="js/popper.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- All Plugins -->
-        <script src="js/alime.bundle.js"></script>
-        <!-- Active -->
-        <script src="js/default-assets/active.js"></script>
-    </body>
+    <!-- Why Choose Us Area Start -->
+    <section class="why-choose-us-area bg-gray section-padding-80-0 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                        <h2>Why Choose Us</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Single Why Choose Area -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="why-choose-us-content text-center mb-80 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="chosse-us-icon">
+                            <i class="fa fa-film" aria-hidden="true"></i>
+                        </div>
+                        <h4>High Quality Images</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur isicing
+                            elit, sed do eiusmod tempor incididunt ut labore
+                            et dolore magna aliqua. Ut elit, sed do eiusmod
+                            te
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Single Why Choose Area -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="why-choose-us-content text-center mb-80 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="chosse-us-icon">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </div>
+                        <h4>Abundant Experience</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur isicing
+                            elit, sed do eiusmod tempor incididunt ut labore
+                            et dolore magna aliqua. Ut elit, sed do eiusmod
+                            te
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Single Why Choose Area -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="why-choose-us-content text-center mb-80 wow fadeInUp" data-wow-delay="500ms">
+                        <div class="chosse-us-icon">
+                            <i class="fa fa-camera" aria-hidden="true"></i>
+                        </div>
+                        <h4>Modern Equipments</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur isicing
+                            elit, sed do eiusmod tempor incididunt ut labore
+                            et dolore magna aliqua. Ut elit, sed do eiusmod
+                            te
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose  us Area End -->
+
+    <!-- Our Team Area Start -->
+    <section class="our-team-area section-padding-80-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                        <h2>Our Team</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <% for(member of members) { %>
+                    <!-- Team Member Area -->
+                    <div class="col-md-6 col-xl-3">
+                        <div class="team-content-area text-center mb-30 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="member-thumb">
+                                <img src="<%= member.profilePicture %>" style="height: 150px;" alt="" />
+                            </div>
+                            <h5>
+                                <%= member.name %>
+                            </h5>
+                            <span>
+                                <%= member.role %>
+                            </span>
+                            <div class="member-social-info">
+                                <% if(member.facebookProfile) { %>
+                                    <a href="<%= member.facebookProfile %>"><i class="ti-facebook"></i></a>
+                                    <% } %>
+                                        <% if(member.instagramProfile) { %>
+                                            <a href="<%= member.instagramProfile %>"><i class="ti-instagram"></i></a>
+                                            <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </section>
+    <!-- Our Team Area End -->
+
+    <!-- Follow Area Start -->
+    <div class="follow-area clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Follow Instagram</h2>
+                        <p>@Alime_photographer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instagram Feed Area -->
+        <div class="instragram-feed-area owl-carousel">
+            <!-- Single Instagram Item -->
+            <div class="single-instagram-item">
+                <img src="img/bg-img/11.jpg" alt="" />
+                <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
+                    <a href="#">
+                        <i class="ti-instagram" aria-hidden="true"></i>
+                        <span>Alime_photographer</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Single Instagram Item -->
+            <div class="single-instagram-item">
+                <img src="img/bg-img/12.jpg" alt="" />
+                <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
+                    <a href="#">
+                        <i class="ti-instagram" aria-hidden="true"></i>
+                        <span>Alime_photographer</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Single Instagram Item -->
+            <div class="single-instagram-item">
+                <img src="img/bg-img/13.jpg" alt="" />
+                <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
+                    <a href="#">
+                        <i class="ti-instagram" aria-hidden="true"></i>
+                        <span>Alime_photographer</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Single Instagram Item -->
+            <div class="single-instagram-item">
+                <img src="img/bg-img/14.jpg" alt="" />
+                <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
+                    <a href="#">
+                        <i class="ti-instagram" aria-hidden="true"></i>
+                        <span>Alime_photographer</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Single Instagram Item -->
+            <div class="single-instagram-item">
+                <img src="img/bg-img/15.jpg" alt="" />
+                <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
+                    <a href="#">
+                        <i class="ti-instagram" aria-hidden="true"></i>
+                        <span>Alime_photographer</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Single Instagram Item -->
+            <div class="single-instagram-item">
+                <img src="img/bg-img/16.jpg" alt="" />
+                <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
+                    <a href="#">
+                        <i class="ti-instagram" aria-hidden="true"></i>
+                        <span>Alime_photographer</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Follow Area End -->
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-content d-flex align-items-center justify-content-between">
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>
+                                    document.write(
+                                        new Date().getFullYear()
+                                    );
+                                </script>
+                                All rights reserved | by ZeedStudio | This
+                                template is made with
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                by
+                                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <!-- Footer Logo -->
+                        <div class="footer-logo">
+                            <a href="#"><img src="./img/logo/logo2.png" style="width: 150px" alt="" /></a>
+                        </div>
+                        <!-- Social Info -->
+                        <div class="social-info">
+                            <a target="_blank" href="https://www.facebook.com/people/Zeed-studio/100075977942375/"><i
+                                    class="ti-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="ti-twitter-alt" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/zeedstudio__official/" target="_blank"><i
+                                    class="ti-instagram" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area End -->
+
+    <!-- **** All JS Files ***** -->
+    <%- include('./partials/scripts'); %>
+</body>
+
 </html>

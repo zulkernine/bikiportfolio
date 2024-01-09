@@ -1,330 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+
+<head>
+    <%- include('./partials/head'); %>
 
         <!-- Title -->
         <title>Contact Us | ZeedStudio</title>
-        <meta
-            name="description"
-            content="Best Photoshoot and Cinematography or Videography for Birthday,Wedding,Pre-Wedding,Celebrities or any other events | ZeedStudio"
-        />
-        <meta name="author" content="Sarfaraj" />
-        <meta
-            name="keywords"
-            content="Photoshoot, Cinematography, Videography, Birthday Photoshoot, Wedding Photoshoot, Pre-wedding Photoshoot, Celebrity Photoshoot"
-        />
 
-        <!-- Favicon -->
-        <link rel="icon" href="./img/logo/favicon.ico" />
+        <style>
+            body {
+                background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+            }
 
-        <!-- Stylesheet -->
-        <link rel="stylesheet" href="style.css" />
-    </head>
+            .contact-form {
+                background: #fff;
+                margin-top: 10%;
+                margin-bottom: 5%;
+                width: 70%;
+            }
 
-    <body>
-        <!-- Preloader -->
-        <div id="preloader">
-            <div class="loader"></div>
-        </div>
-        <!-- /Preloader -->
+            .contact-form .form-control {
+                border-radius: 1rem;
+            }
 
-        <!-- Top Search Form Area -->
-        <div class="top-search-area">
-            <div
-                class="modal fade"
-                id="searchModal"
-                tabindex="-1"
-                role="dialog"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <!-- Close -->
-                            <button
-                                type="button"
-                                class="btn close-btn"
-                                data-dismiss="modal"
-                            >
-                                <i class="ti-close"></i>
-                            </button>
-                            <!-- Form -->
-                            <form action="index.html" method="post">
-                                <input
-                                    type="search"
-                                    name="top-search-bar"
-                                    class="form-control"
-                                    placeholder="Search and hit enter..."
-                                />
-                                <button type="submit">Search</button>
-                            </form>
-                        </div>
+            .contact-image {
+                text-align: center;
+            }
+
+            .contact-image img {
+                border-radius: 6rem;
+                width: 11%;
+                margin-top: -3%;
+                transform: rotate(29deg);
+            }
+
+            .contact-form form {
+                padding: 14%;
+            }
+
+            .contact-form form .row {
+                margin-bottom: -7%;
+            }
+
+            .contact-form h3 {
+                margin-bottom: 8%;
+                margin-top: -10%;
+                text-align: center;
+                color: #0062cc;
+            }
+
+            .contact-form .btnContact {
+                width: 50%;
+                border: none;
+                border-radius: 1rem;
+                padding: 1.5%;
+                background: #dc3545;
+                font-weight: 600;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .btnContactSubmit {
+                width: 50%;
+                border-radius: 1rem;
+                padding: 1.5%;
+                color: #fff;
+                background-color: #0062cc;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
+
+    <!-- Top Search Form Area -->
+    <div class="top-search-area">
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- Close -->
+                        <button type="button" class="btn close-btn" data-dismiss="modal">
+                            <i class="ti-close"></i>
+                        </button>
+                        <!-- Form -->
+                        <form action="index.html" method="post">
+                            <input type="search" name="top-search-bar" class="form-control"
+                                placeholder="Search and hit enter..." />
+                            <button type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Header Area Start -->
-        <header class="header-area">
-            <!-- Main Header Start -->
-            <div class="main-header-area">
-                <div class="classy-nav-container breakpoint-off">
-                    <div class="container">
-                        <!-- Classy Menu -->
-                        <nav
-                            class="classy-navbar justify-content-between"
-                            id="alimeNav"
-                        >
-                            <!-- Logo -->
-                            <a class="nav-brand" href="/"
-                                ><img
-                                    src="./img/logo/logo4.png"
-                                    style="width: 200px"
-                                    alt=""
-                            /></a>
+    <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <%- include('./partials/navbar',{currentTab: 'Contact' }); %>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
 
-                            <!-- Navbar Toggler -->
-                            <div class="classy-navbar-toggler">
-                                <span class="navbarToggler"
-                                    ><span></span><span></span><span></span
-                                ></span>
-                            </div>
-
-                            <!-- Menu -->
-                            <div class="classy-menu">
-                                <!-- Menu Close Button -->
-                                <div class="classycloseIcon">
-                                    <div class="cross-wrap">
-                                        <span class="top"></span
-                                        ><span class="bottom"></span>
-                                    </div>
-                                </div>
-                                <!-- Nav Start -->
-                                <div class="classynav">
-                                    <ul id="nav">
-                                        <li>
-                                            <a href="/">Home</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="/about">About</a>
-                                        </li>
-                                        <!-- <li>
-                                            <a href="/our-crew">Our Crew</a>
-                                        </li> -->
-                                        <li>
-                                            <a href="/gallery">Gallery</a>
-                                        </li>
-                                        <li><a href="/cinema">Films</a></li>
-                                        <li><a href="/faq">FAQ</a></li>
-                                        <li class="active">
-                                            <a href="/contact">Contact</a>
-                                        </li>
-                                    </ul>
-
-                                    <!-- Search Icon -->
-                                    <!-- <div
-                                        class="search-icon"
-                                        data-toggle="modal"
-                                        data-target="#searchModal"
-                                    >
-                                        <i class="ti-search"></i>
-                                    </div> -->
-                                </div>
-                                <!-- Nav End -->
-                            </div>
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area bg-img bg-overlay jarallax"
+        style="background-image: url('https://picsum.photos/1001')">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="page-title">Contact</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html"><i class="icon_house_alt"></i>
+                                        Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Contact
+                                </li>
+                            </ol>
                         </nav>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- Header Area End -->
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->
 
-        <!-- Breadcrumb Area Start -->
-        <section
-            class="breadcrumb-area bg-img bg-overlay jarallax"
-            style="background-image: url('https://picsum.photos/1001')"
-        >
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12">
-                        <div class="breadcrumb-content text-center">
-                            <h2 class="page-title">Contact</h2>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item">
-                                        <a href="index.html"
-                                            ><i class="icon_house_alt"></i>
-                                            Home</a
-                                        >
-                                    </li>
-                                    <li
-                                        class="breadcrumb-item active"
-                                        aria-current="page"
-                                    >
-                                        Contact
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Breadcrumb Area End -->
-
-        <!-- Contact Area Start -->
-        <div class="contact-area section-padding-80-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-6">
-                        <h2
-                            class="contact-title mb-30"
-                            style="
+    <!-- Contact Area Start -->
+    <div class="contact-area section-padding-80-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <h2 class="contact-title mb-30" style="
                                 font-family: 'Courier New', Courier, monospace;
-                            "
-                        >
-                            Let’s Work <br />Together
-                        </h2>
+                            ">
+                        Let’s Work <br />Together
+                    </h2>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <!-- Contact Info -->
+                    <div class="contact-info mb-30">
+                        <p>Name</p>
+                        <a href="mailto:<%= contactDetails.name %>">
+                            <%= contactDetails.name %>
+                        </a>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <!-- Contact Info -->
-                        <div class="contact-info mb-30">
-                            <p>Email</p>
-                            <a href="mailto:<%= teamInfo.email %>">
-                                <%= teamInfo.email %>
-                            </a>
-                        </div>
-                        <!-- Contact Info -->
-                        <div class="contact-info mb-30">
-                            <p>Call Us</p>
-                            <h4 href="#"><%= teamInfo.phone %></h4>
-                        </div>
+                    <!-- Contact Info -->
+                    <div class="contact-info mb-30">
+                        <p>Email</p>
+                        <a href="mailto:<%= contactDetails.email %>">
+                            <%= contactDetails.email %>
+                        </a>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <!-- Contact Info -->
-                        <div class="contact-info mb-30">
-                            <p>Visit Us</p>
-                            <a href="#">
-                                <%= teamInfo.locationDescription %>
-                            </a>
-                        </div>
+                    <!-- Contact Info -->
+                    <div class="contact-info mb-30">
+                        <p>Call Us</p>
+                        <h4 href="#">
+                            <%= contactDetails.contactNumber %>
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <!-- Contact Info -->
+                    <div class="contact-info mb-30">
+                        <p>Visit Us</p>
+                        <a href="#">
+                            <%= contactDetails.address %>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Contact Area End -->
+    </div>
+    <!-- Contact Area End -->
 
-        <!-- Map Area Start -->
-        <div class="map-area section-padding-0-80">
-            <div class="container">
-                <div id="map">
-                    <!-- <iframe
-                        src="<%= teamInfo.locationUrl %>"
-                        allowfullscreen
-                    ></iframe> -->
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29400.992002287116!2d88.35405411711479!3d22.908796747667097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f893d271ef02df%3A0xe7f12bb37db38ecc!2sKapasdanga%20P%2C%20Chinsurah%2C%20West%20Bengal%20712103!5e0!3m2!1sen!2sin!4v1687017944003!5m2!1sen!2sin"
-                        style="border: 0"
-                        allowfullscreen
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                </div>
+    <!-- Map Area Start -->
+    <!-- <div class="map-area section-padding-0-80">
+        <div class="container">
+            <div id="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29400.992002287116!2d88.35405411711479!3d22.908796747667097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f893d271ef02df%3A0xe7f12bb37db38ecc!2sKapasdanga%20P%2C%20Chinsurah%2C%20West%20Bengal%20712103!5e0!3m2!1sen!2sin!4v1687017944003!5m2!1sen!2sin"
+                    style="border: 0" allowfullscreen loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-        <!-- Map Area End -->
+    </div> -->
+    <!-- Map Area End -->
 
-        <!-- Footer Area Start -->
-        <footer class="footer-area">
-            <div class="container">
+    <section>
+        <div class="container contact-form">
+            <div class="contact-image">
+                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
+            </div>
+            <form method="post" action="/<%= accountId %>/client_details">
+                <h3>Drop Us a Message</h3>
                 <div class="row">
-                    <div class="col-12">
-                        <div
-                            class="footer-content d-flex align-items-center justify-content-between"
-                        >
-                            <!-- Copywrite Text -->
-                            <div class="copywrite-text">
-                                <p>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;
-                                    <script>
-                                        document.write(
-                                            new Date().getFullYear()
-                                        );
-                                    </script>
-                                    All rights reserved | by ZeedStudio | This
-                                    template is made with
-                                    <i
-                                        class="fa fa-heart-o"
-                                        aria-hidden="true"
-                                    ></i>
-                                    by
-                                    <a
-                                        href="https://colorlib.com"
-                                        target="_blank"
-                                        >Colorlib</a
-                                    >
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                </p>
-                            </div>
-                            <!-- Footer Logo -->
-                            <div class="footer-logo">
-                                <a href="#"
-                                    ><img
-                                        src="./img/logo/logo2.png"
-                                        style="width: 150px"
-                                        alt=""
-                                /></a>
-                            </div>
-                            <!-- Social Info -->
-                            <div class="social-info">
-                                <a
-                                    target="_blank"
-                                    href="https://www.facebook.com/people/Zeed-studio/100075977942375/"
-                                    ><i
-                                        class="ti-facebook"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a href="#"
-                                    ><i
-                                        class="ti-twitter-alt"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                                <a
-                                    href="https://www.instagram.com/zeedstudio__official/"
-                                    target="_blank"
-                                    ><i
-                                        class="ti-instagram"
-                                        aria-hidden="true"
-                                    ></i
-                                ></a>
-                            </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *"
+                                value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *"
+                                value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea name="txtMsg" class="form-control" placeholder="Your Message *"
+                                style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-content d-flex align-items-center justify-content-between">
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>
+                                    document.write(
+                                        new Date().getFullYear()
+                                    );
+                                </script>
+                                All rights reserved | by ZeedStudio | This
+                                template is made with
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                by
+                                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <!-- Footer Logo -->
+                        <div class="footer-logo">
+                            <a href="#"><img src="./img/logo/logo2.png" style="width: 150px" alt="" /></a>
+                        </div>
+                        <!-- Social Info -->
+                        <div class="social-info">
+                            <a target="_blank" href="https://www.facebook.com/people/Zeed-studio/100075977942375/"><i
+                                    class="ti-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="ti-twitter-alt" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/zeedstudio__official/" target="_blank"><i
+                                    class="ti-instagram" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- Footer Area End -->
+        </div>
+    </footer>
+    <!-- Footer Area End -->
 
-        <!-- **** All JS Files ***** -->
-        <!-- jQuery 2.2.4 -->
-        <script src="js/jquery.min.js"></script>
-        <!-- Popper -->
-        <script src="js/popper.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- All Plugins -->
-        <script src="js/alime.bundle.js"></script>
-        <!-- Active -->
-        <script src="js/default-assets/active.js"></script>
-    </body>
+    <!-- **** All JS Files ***** -->
+    <%- include('./partials/scripts'); %>
+</body>
+
 </html>

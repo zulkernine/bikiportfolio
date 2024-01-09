@@ -41,47 +41,80 @@ app.get("/echo", (req, res) => {
     res.send(req.body.tostring());
 });
 
-app.get("/", async (req, res) => {
+app.get("/:accountId", async (req, res) => {
     const recentImages = await MediaService.getRecentImages();
     const recentVideos = await MediaService.getRecentVideos();
     const teamMembers = await MediaService.getAllTeamMembers();
+    const homePageInfo = await MediaService.getHomePageInfo(
+        req.params.accountId
+    );
+    const services = await MediaService.getServices(req.params.accountId);
 
-    res.render("index.ejs", { recentImages, recentVideos, teamMembers });
+    console.log(homePageInfo);
+
+    res.render("index.ejs", {
+        recentImages,
+        recentVideos,
+        teamMembers,
+        accountId: req.params.accountId,
+        homePageInfo,
+        services,
+    });
 });
 
-app.get("/about", async (req, res) => {
-    const aboutImages = await MediaService.getAlboutImages();
-    res.render("about.ejs", { aboutImages });
+app.get("/:accountId/about", async (req, res) => {
+    const aboutUs = await MediaService.getAlboutInfo(req.params.accountId);
+    const members = await MediaService.getTeamMembers(req.params.accountId);
+
+    console.log(members);
+    res.render("about.ejs", {
+        accountId: req.params.accountId,
+        aboutUs,
+        members,
+    });
 });
 
-app.get("/faq", async (req, res) => {
-    res.render("faq.ejs",{faqList});
+app.get("/:accountId/faq", async (req, res) => {
+    res.render("faq.ejs", { faqList, accountId: req.params.accountId });
 });
 
-app.get("/our-crew", async (req, res) => {
+app.get("/:accountId/our-crew", async (req, res) => {
     const teamMembers = await MediaService.getAllTeamMembers();
-    res.render("crew.ejs", { teamMembers });
+    res.render("crew.ejs", { teamMembers, accountId: req.params.accountId });
 });
 
-app.get("/cinema", async (req, res) => {
+app.get("/:accountId/cinema", async (req, res) => {
     const allVideos = await MediaService.getAllVideos();
-    res.render("cinema.ejs",{allVideos});
+    res.render("cinema.ejs", { allVideos, accountId: req.params.accountId });
 });
 
-app.get("/contact", async (req, res) => {
-    const teamInfo = await MediaService.getTeamInfo();
+app.get("/:accountId/contact", async (req, res) => {
+    const teamInfo = await MediaService.getTeamInfo(req.params.accountId);
+    const contactDetails = await MediaService.getContactDetails(
+        req.params.accountId
+    );
     console.log(teamInfo);
-    res.render("contact.ejs",{teamInfo});
+    res.render("contact.ejs", {
+        teamInfo,
+        accountId: req.params.accountId,
+        contactDetails,
+    });
 });
 
-app.get("/gallery", async (req, res) => {
+app.get("/:accountId/gallery", async (req, res) => {
     const allImages = await MediaService.getAllImages(true);
     // const recentVideos = await MediaService.getRecentVideos();
-    res.render("gallery.ejs", { allImages });
+    res.render("gallery.ejs", { allImages, accountId: req.params.accountId });
 });
 
-app.get("/single-blog", (req, res) => {
-    res.render("single-blog.ejs");
+app.get("/:accountId/single-blog", (req, res) => {
+    res.render("single-blog.ejs", { accountId: req.params.accountId });
+});
+
+app.post("/:accountId/client_details", (req, res) => {
+    MediaService.addClientQuery(req.params.accountId, req.body);
+
+    res.redirect(`/${req.params.accountId}/contact`);
 });
 
 app.listen(port, () => {

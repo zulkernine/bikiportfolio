@@ -16,25 +16,32 @@ function checkNotAuthenticated(req, res, next) {
 }
 
 router.post("/", (req, res) => {
-    console.log(req.body.password);
+    console.log(req.body.username);
     var params = {
         TableName: config.adminUserTable,
         Key: {
-            id: "zeedstudioadmin",
+            id: req.body.username,
         },
     };
 
     // Call DynamoDB to read the item from the table
-    dynamodb.get(params, function (err, { Item: data }) {
-        if (err) {
-            console.log("Error", err);
-            res.render("login.ejs", { error: err });
+    dynamodb.get(params, function (err, { Item:data }) {
+        console.log(data);
+        console.log("Error", err);
+
+        if (err || !data) {
+            res.render("login.ejs", { error: "Username not found" });
         } else {
             if (bcrypt.compareSync(req.body.password, data.password)) {
                 console.log("Success");
                 req.session.isAuthenticated = true;
+                req.session.username = req.body.username;
+                req.session.accountId = data.accountId;
                 res.redirect("/admin");
-            } else res.render("login.ejs", { error: "Access key is wrong!" });
+            } else
+                res.render("login.ejs", {
+                    error: "Password didn't match, try again!",
+                });
         }
     });
 });
