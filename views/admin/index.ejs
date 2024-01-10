@@ -38,7 +38,9 @@
                     <a href="#client_queries" class="nav-item nav-link">Client Queries</a>
                 </div>
                 <div class="navbar-nav ms-auto">
-                    <h4><span class="badge badge-primary mx-3">@<%= teamInfo.accountId %> </span></h4>
+                    <a href="/<%= teamInfo.accountId %>">
+                        <h4><span class="badge badge-primary mx-3">@<%= teamInfo.accountId %> </span></h4>
+                    </a>
                     <form method="post" action="/logout">
                         <button type="submit" class="btn btn-danger btn-sm">
                             Logout
@@ -78,11 +80,11 @@
                         <form class="row" action="/admin/images" method="post" enctype="multipart/form-data"
                             id="uploadImagesForm">
                             <div class="mb-3 col-auto">
-                                <input class="form-control" type="file" id="formFileMultiple" multiple name="images"
+                                <input class="form-control" type="file" id="formFileMultiple" required multiple name="images"
                                     accept="image/*" />
                             </div>
                             <div class="col-auto">
-                                <select class="form-select" aria-label="Tag" name="tag">
+                                <select class="form-select" required aria-label="Tag" name="tag">
                                     <option selected value="WEDDING">
                                         WEDDING
                                     </option>
@@ -124,17 +126,17 @@
                         <form class="row" action="/admin/videos" method="post" enctype="multipart/form-data">
                             <div class="mb-3 col-auto">
                                 <label for="thumbnailImageFile" class="form-label">Select thumbnail image</label>
-                                <input class="form-control" type="file" id="thumbnailImageFile" multiple
+                                <input class="form-control" type="file" id="thumbnailImageFile" multiple required
                                     name="thumbnail" accept="image/*" />
                             </div>
                             <div class="mb-3">
                                 <label for="videoDescription" class="form-label">Video URL(Youtube)</label>
-                                <input type="url" class="form-control" id="videoDescription" name="url"
+                                <input type="url" class="form-control" id="videoDescription" name="url" required
                                     placeholder="https://www.youtube.com/watch?v=TKLamhyJ6bE" />
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required
                                     name="description"></textarea>
                             </div>
                             <div class="col-auto">

@@ -5,6 +5,7 @@ const fileUpload = require("express-fileupload");
 const adminRouter = require("./route/admin");
 const homeRouter = require("./route/home");
 const authRouter = require("./route/auth");
+const signUpRouter = require("./route/signup");
 const clientApiRouter = require("./route/client-api");
 const session = require("express-session");
 const flash = require("express-flash");
@@ -31,6 +32,7 @@ app.use(express.static(__dirname + "/static"));
 app.use("/admin", checkAuthenticated, adminRouter);
 app.use("/api", clientApiRouter);
 app.use("/login", authRouter);
+app.use("/signup", signUpRouter);
 
 app.post("/logout", (req, res) => {
     req.session.isAuthenticated = null;
@@ -41,26 +43,14 @@ app.get("/echo", (req, res) => {
     res.send(req.body.tostring());
 });
 
-app.get("/:accountId", async (req, res) => {
-    const recentImages = await MediaService.getRecentImages();
-    const recentVideos = await MediaService.getRecentVideos();
-    const teamMembers = await MediaService.getAllTeamMembers();
-    const homePageInfo = await MediaService.getHomePageInfo(
-        req.params.accountId
-    );
-    const services = await MediaService.getServices(req.params.accountId);
-
-    console.log(homePageInfo);
-
-    res.render("index.ejs", {
-        recentImages,
-        recentVideos,
-        teamMembers,
-        accountId: req.params.accountId,
-        homePageInfo,
-        services,
-    });
+app.get("/404", function (req, res) {
+    res.status(404).render("404.ejs");
 });
+
+app.get("/500", function (req, res) {
+    res.status(500).render("500.ejs");
+});
+
 
 app.get("/:accountId/about", async (req, res) => {
     const aboutUs = await MediaService.getAlboutInfo(req.params.accountId);
@@ -116,6 +106,50 @@ app.post("/:accountId/client_details", (req, res) => {
 
     res.redirect(`/${req.params.accountId}/contact`);
 });
+
+app.get("/:accountId", async (req, res) => {
+    const homePageInfo = await MediaService.getHomePageInfo(
+        req.params.accountId
+    );
+    if (!homePageInfo) {
+        return res.redirect("404");
+    }
+    const recentImages = await MediaService.getRecentImages(
+        req.params.accountId
+    );
+    const recentVideos = await MediaService.getRecentVideos(
+        req.params.accountId
+    );
+    const services = await MediaService.getServices(req.params.accountId);
+
+    console.log(homePageInfo);
+
+    res.render("index.ejs", {
+        recentImages,
+        recentVideos,
+        accountId: req.params.accountId,
+        homePageInfo,
+        services,
+    });
+});
+
+app.get("/:accountId/*", function (req, res) {
+    res.redirect("/404");
+});
+
+app.get("/", function (req, res) {
+    res.sendFile(__dirname+"/index.html");
+});
+
+app.get("*", function (req, res) {
+    res.redirect("404");
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).render("500.ejs");
+});
+
 
 app.listen(port, () => {
     console.log("Listening to port: " + port);

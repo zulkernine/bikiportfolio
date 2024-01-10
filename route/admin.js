@@ -6,8 +6,8 @@ const { v4: uuidv4 } = require("uuid");
 const MediaService = require("../service/media-service");
 
 router.get("/", async (req, res) => {
-    const allImages = await MediaService.getAllImages();
-    const allVideos = await MediaService.getAllVideos();
+    const allImages = await MediaService.getAllImages(req.session.accountId);
+    const allVideos = await MediaService.getAllVideos(req.session.accountId);
     const teamInfo = await MediaService.getTeamInfoByUsername(
         req.session.username
     );
@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
         teamInfo,
         services,
         members,
-        contactDetails,
+        contactDetails: contactDetails ?? {},
         queries
     });
 });

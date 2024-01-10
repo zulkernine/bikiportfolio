@@ -3,8 +3,8 @@ const config = require("../config.json");
 const { v4: uuidv4 } = require("uuid");
 
 class MediaService {
-    static async getAllImages(shuffle = false) {
-        const allImages = await getAllDynamoImages();
+    static async getAllImages(accountId,shuffle = false) {
+        const allImages = await getAllDynamoImages(accountId);
         // add filters
         for (let i = 0; i < allImages.length; i++) {
             switch (allImages[i].tag) {
@@ -49,30 +49,30 @@ class MediaService {
         return infos.length ? infos[0] : null;
     }
 
-    static async getRecentImages() {
-        const allImages = (await getAllDynamoImages()).filter(
+    static async getRecentImages(accountId) {
+        const allImages = (await getAllDynamoImages(accountId)).filter(
             (img) => img["isRecent"]
         );
         allImages.sort((a, b) => b.uploadedAt - a.uploadedAt);
         return allImages;
     }
 
-    static async getAllVideos() {
-        const allVideos = await getAllDynamoVideos();
+    static async getAllVideos(accountId) {
+        const allVideos = await getAllDynamoVideos(accountId);
         allVideos.sort((a, b) => b.uploadedAt - a.uploadedAt);
         return allVideos;
     }
 
-    static async getRecentVideos() {
-        const allVideos = (await getAllDynamoVideos()).filter(
+    static async getRecentVideos(accountId) {
+        const allVideos = (await getAllDynamoVideos(accountId)).filter(
             (vid) => vid.isRecent
         );
         allVideos.sort((a, b) => b.uploadedAt - a.uploadedAt);
         return allVideos;
     }
 
-    static async getAllTeamMembers() {
-        const members = await getAllTeamMembers();
+    static async getAllTeamMembers(accountId) {
+        const members = await getAllTeamMembers(accountId);
         members.sort((a, b) => a.serialNo - b.serialNo);
         return members;
     }
@@ -204,23 +204,35 @@ class MediaService {
 
 module.exports = MediaService;
 
-async function getAllDynamoImages() {
+async function getAllDynamoImages(accountId) {
     const params = {
         TableName: config.imageTable,
+        FilterExpression: "accountId = :val",
+        ExpressionAttributeValues: {
+            ":val": accountId,
+        },
     };
     return await scanDynamoTable(params, []);
 }
 
-async function getAllDynamoVideos() {
+async function getAllDynamoVideos(accountId) {
     const params = {
         TableName: config.videoTable,
+        FilterExpression: "accountId = :val",
+        ExpressionAttributeValues: {
+            ":val": accountId,
+        },
     };
     return await scanDynamoTable(params, []);
 }
 
-async function getAllTeamMembers() {
+async function getAllTeamMembers(accountId) {
     const params = {
         TableName: config.teamTable,
+        FilterExpression: "accountId = :val",
+        ExpressionAttributeValues: {
+            ":val": accountId,
+        },
     };
     return await scanDynamoTable(params, []);
 }
