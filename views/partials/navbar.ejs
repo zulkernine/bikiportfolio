@@ -1,0 +1,60 @@
+<nav class="classy-navbar justify-content-between" id="alimeNav">
+    <!-- Logo -->
+    <a class="nav-brand" href="/"
+        ><img src="/img/logo/logo4.png" alt="" style="width: 200px"
+    /></a>
+
+    <!-- Navbar Toggler -->
+    <div class="classy-navbar-toggler">
+        <span class="navbarToggler"
+            ><span></span><span></span><span></span
+        ></span>
+    </div>
+
+    <!-- Menu -->
+    <div class="classy-menu">
+        <!-- Menu Close Button -->
+        <div class="classycloseIcon">
+            <div class="cross-wrap">
+                <span class="top"></span><span class="bottom"></span>
+            </div>
+        </div>
+        <!-- Nav Start -->
+        <div class="classynav">
+            <ul id="nav">
+                <li class="<%= currentTab=='Home' ? 'active' : '' %>">
+                    <a href="/<%= accountId %>">Home</a>
+                </li>
+
+                <li class="<%= currentTab=='About' ? 'active' : '' %>">
+                    <a href="/<%= accountId %>/about">About</a>
+                </li>
+                <!-- <!-- <li>
+                                            <a href="/our-crew">Our Crew</a>
+                                        </li> -->
+                <li class="<%= currentTab=='Gallery' ? 'active' : '' %>">
+                    <a href="/<%= accountId %>/gallery">Gallery</a>
+                </li>
+                <li class="<%= currentTab=='Films' ? 'active' : '' %>">
+                    <a href="/<%= accountId %>/cinema">Films</a>
+                </li>
+                <li class="<%= currentTab=='FAQ' ? 'active' : '' %>">
+                    <a href="/<%= accountId %>/faq">FAQ</a>
+                </li>
+                <li class="<%= currentTab=='Contact' ? 'active' : '' %>">
+                    <a href="/<%= accountId %>/contact">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Search Icon -->
+            <!-- <!-- <div
+                                        class="search-icon"
+                                        data-toggle="modal"
+                                        data-target="#searchModal"
+                                    >
+                                        <i class="ti-search"></i>
+                                    </div> -->
+        </div>
+        <!-- Nav End -->
+    </div>
+</nav>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign Up</title>
+    <%- include('./partials/head'); %>
+        <style>
+            .bg-image-vertical {
+                position: relative;
+                overflow: hidden;
+                background-repeat: no-repeat;
+                background-position: right center;
+                background-size: auto 100%;
+            }
+
+            @media (min-width: 1025px) {
+                .h-custom-2 {
+                    height: 100%;
+                }
+            }
+        </style>
+</head>
+
+<body>
+    <section class="vh-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 text-black">
+                    <div class="px-5 ms-xl-4">
+                        <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085"></i>
+                        <span class="h1 fw-bold mb-0 text-center">Alekh</span>
+                    </div>
+
+                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-1 pt-5 pt-xl-0 mt-xl-n5">
+                        <form style="width: 23rem" action="/signup" method="post">
+                            <div class="form-outline mb-4">
+                                <input id="username" type="email" name="username" required
+                                    class="form-control form-control-lg" />
+                                <label class="form-label" for="username">Email</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input id="password" type="password" name="password" required
+                                    class="form-control form-control-lg" />
+                                <label class="form-label" for="password">Password</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input id="channel" type="text" name="accountId" required
+                                    class="form-control form-control-lg" />
+                                <label class="form-label" for="channel">Account ID ( Must be unique, Use only characters and numbers )</label>
+                            </div>
+
+                            <div class="pt-1 mb-4">
+                                <button class="btn btn-info btn-lg btn-block" type="submit">
+                                    Signup
+                                </button>
+                            </div>
+                            <div class="pt-1 mb-4">
+                                <a href="/login"><p class="text-primary text-center">Sign in</p></a>
+                            </div>
+
+                            <div class="pt-1 mb-4">
+                                <% if (typeof error !="undefined" ) { %>
+                                    <p class="alert alert-danger">
+                                        <%= error %>
+                                    </p>
+                                    <% } %>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-6 px-0 d-none d-sm-block">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img3.webp"
+                        alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <form>
+            <div>
+                <h2>Enter your accesskey</h2>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input />
+            </div>
+            <button type="submit">Login</button>
+        </form> -->
+</body>
+
+</html>
